@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# FSD-Eindopdracht
+## Integrale eindopdrachtBootcamp FSD (60 EC)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+De bootcamp Full Stack Developer behandelt zowel de leerlijn Backend als de leerlijn Frontend. Om de bootcamp af te ronden dien je de volgende leeruitkomsten aan te tonen:
 
-## Available Scripts
+## Frontend
 
-In the project directory, you can run:
+#### 1. HTML & CSS
 
-### `npm start`
+De student bouwt statische webpagina’s met HTML, voorziet deze van styling en layout door CSS en ontwerpt een prototype in Figma waarmee hij een visueel design omzet naar een webpagina.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 2. Javascript
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+De student schrijft en test schone, gestructureerde JavaScriptcode waarmee hij webpagina’s voorziet van interactie en gebruikt hierbij een REST API.
 
-### `npm test`
+#### 3. React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+De student bouwt een interactieve en modulaire webapplicatie in React en maakt hierbij gebruik van herbruikbare interface elementen, state management en de life cycles van React.
 
-### `npm run build`
+## Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 4. Java Programming
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+De student programmeert in Java, waarbij hij OOP-structuren toepast. Hierbij past de student automatisch testen toe en beheert hij externe code met behulp van Maven, waardoor men in een team aan Java-projecten kan werken.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 5. Backend Documentatie
 
-### `npm run eject`
+De student stelt, op basis van de Software Development Life Cycle, technische documentatie op voor de backend van een applicatie, gebruik makend van UML-diagrammen.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 6. Database Development
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+De student ontwerpt een relationele database, waarin data met onderlinge relaties veilig opgeslagen en uitgelezen kan worden, aan de hand van een technisch ontwerp document. Tevens beheert de student de data en rechten van databasegebruikers en voert hij CRUD-opdrachten uit op de database.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 7. Spring Boot
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+De student zet een backend applicatie op met behulp van het Spring-boot framework en maakt gebruik van verschillende architecturale lagen binnen Spring. De student test zijn applicatie met unit-testen en het mockenvan klassen en tevens communiceert de applicatie met een database.
 
-## Learn More
+#### 8.Design Patterns & Clean Code
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+De student schrijft zijn code volgens de afgesproken conventies van Clean Code en ontwikkelt highly cohesive en loose coupled code, door de toepassing van Design Patterns en SOLID.
