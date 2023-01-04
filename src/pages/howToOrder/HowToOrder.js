@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Homepage = () => {
+const HowToOrder = () => {
     return (
         <div>
-            test
+
         </div>
     );
 };
 
-export default Homepage;
+export default HowToOrder;
