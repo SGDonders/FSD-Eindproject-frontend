@@ -1,0 +1,37 @@
+
+
+.Tiles {
+    height: 440px;
+    width: 440px;
+    color: black;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.product-tiles {
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    gap: 60px;
+
+}
+
+.test {
+    margin-left: 50px;
+}
+
+#tiles-title {
+    font-family: var(--font-headings);
+    -webkit-text-stroke: 2px black;
+}
+
+#tiles-text {
+    font-family: var(--font-body);
+    color: whitesmoke;
+    -webkit-text-stroke: 1px black;
+
+}

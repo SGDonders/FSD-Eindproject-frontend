@@ -1,0 +1,101 @@
+
+.mid-section {
+    border: 1px solid greenyellow;
+    height: 400px;
+    width: 1100px;
+    margin-left: 72px;
+    margin-top: 25px;
+}
+
+.mid-section-text {
+    padding: 13px;
+    font-size: 20px;
+    font-family: var(--font-body);
+}
+
+#mid-section-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-right: 68px;
+    margin-left: 12px;
+    margin-top: 20px;
+}
+
+#farmers-button {
+    margin-left: 80px;
+}
+
+.mid-section-farmers {
+    border: 1px solid greenyellow;
+    height: 400px;
+    width: 1100px;
+    margin-right: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.farmers-text {
+    padding: 13px;
+    color: whitesmoke;
+    font-size: 20px;
+    margin-bottom: 35px;
+    font-family: var(--font-body);
+
+
+}
+
+.farmers-title {
+    font-family: var(--font-headings);
+    color: whitesmoke;
+    padding: 13px;
+
+
+
+}
+
+.mid-section-title {
+    font-family: var(--font-headings);
+    padding: 13px;
+
+}
+
+#inner-button-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: whitesmoke;
+}
+
+#outer-button-section {
+    background-color: whitesmoke;
+}
+
+#outer-farmers-section {
+    background-image: url("../../assets/piglets.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+}
+
+#inner-farmers-section {
+    display: flex;
+    flex-direction: row;
+}
+
+#outer-bottom-section-tile {
+
+    height: 590px;
+}
+
+
+#inner-bottom-section-tile {
+    height: 590px;
+
+}
+
+.search-container form {
+    position: relative;
+}
