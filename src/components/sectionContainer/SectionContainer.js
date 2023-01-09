@@ -1,9 +1,9 @@
 import React from 'react';
 import './SectionContainer.css';
 
-const SectionContainer = ({ title, backgroundImage, classname }) => {
+const SectionContainer = ({ title, backgroundImage, classname, txt }) => {
     return (
-        <header
+        <div
             className={classname}
             style={{
                 backgroundImage: `url(${backgroundImage})`,
@@ -14,7 +14,8 @@ const SectionContainer = ({ title, backgroundImage, classname }) => {
             }}
         >
             <h1 className="inner-container">{title}</h1>
-        </header>
+            <p>{txt}</p>
+        </div>
     );
 };
 

@@ -6,7 +6,7 @@ import Button from "../../components/button/Button";
 import sheep from "../../assets/lamb.jpg";
 import Header from "../../components/header/Header";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import multipleVegetables from "../../assets/MultipleVegetables.webp";
+import cherry from "../../assets/cherry.jpg";
 
 
 
@@ -43,8 +43,8 @@ function RegisterPage() {
         <body>
         <Navigation/>
         <Header
-            title="Join our local farmers community, our farmers are happy to meet you!"
-            backgroundImage={multipleVegetables}
+            title="Join our local farmers community, register here!"
+            backgroundImage={cherry}
             classname="outer-container"
             id="top-section"
         />

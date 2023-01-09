@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductTile.css';
-import milk from '../../assets/milk.jpg'
+import milks from '../../assets/milks.jpg'
 import fruit from '../../assets/peren.jpg'
 import vegetable from '../../assets/vegetables.jpg'
 import Button from "../button/Button";
@@ -18,10 +18,10 @@ const ProductTile = ({ title, backgroundImage, text }) => (
     </div>
 );
 
-const Tiles = () => (
+const Tiles = ({title, img, txt}) => (
     <div className="product-tiles">
-        <ProductTile title="MILK" backgroundImage={milk} text="Text for tile 1" />
         <ProductTile title="VEGETABLES" backgroundImage={vegetable} text="Text for tile 2" />
+        <ProductTile title="MILK" backgroundImage={milks} text="Text for tile 1" />
         <ProductTile title="FRUIT" backgroundImage={fruit} text="Text for tile 3" />
 
     </div>
