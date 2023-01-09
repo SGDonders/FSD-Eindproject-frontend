@@ -82,7 +82,7 @@ select {
     width: 100vw;
     background-color: whitesmoke;
 
-    border: 1px solid blue;
+
 }
 
 .inner-container {
@@ -93,5 +93,4 @@ select {
     height: 500px;
     width: 1600px;
 
-    border: 1px solid red;
 }

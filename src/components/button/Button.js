@@ -2,10 +2,10 @@ import React from 'react';
 import './Button.css';
 
 
-function Button({ text,children, type = 'button', onClick }) {
+function Button({ text,children, type = 'button', onClick, className }) {
 
     return (
-        <button className="mid-section-buttons"
+        <button className={className}
                 id={text}
                 type={type}
                 onClick={onClick}>

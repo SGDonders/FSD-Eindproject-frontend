@@ -18,11 +18,11 @@ function Navigation() {
                 </li>
                 <li className="navbar-list-items">
                     <NavLink className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
-                             to="/how-to-order">How to order</NavLink>
+                             to="/HowToOrder">How to order</NavLink>
                 </li>
                 <li className="navbar-list-items">
                     <NavLink className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
-                             to="/contact">Contact</NavLink>
+                             to="/RegisterPage">Register</NavLink>
 
                 </li>
                     </span>

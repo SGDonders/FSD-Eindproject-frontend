@@ -1,7 +1,7 @@
 import React from 'react';
-import './Header.css';
+import './SectionContainer.css';
 
-const Header = ({ title, backgroundImage, classname }) => {
+const SectionContainer = ({ title, backgroundImage, classname }) => {
     return (
         <header
             className={classname}
@@ -18,4 +18,4 @@ const Header = ({ title, backgroundImage, classname }) => {
     );
 };
 
-export default Header;
+export default SectionContainer;
