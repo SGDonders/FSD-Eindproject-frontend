@@ -6,9 +6,24 @@ import Button from "../../components/button/Button";
 import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/footer/Footer";
 import Tiles from "../../components/productTiles/ProductTile";
+import {useNavigate} from "react-router-dom";
 
 
 const Homepage = () => {
+
+    const navigate = useNavigate()
+    function  clickHandler1( ) {
+        navigate("/registerPage")
+    }
+
+    function  clickHandler2( ) {
+        navigate("/howToOrder")
+    }
+
+    function  clickHandler3( ) {
+        navigate("/products")
+    }
+
 
     return (
         <>
@@ -35,12 +50,16 @@ const Homepage = () => {
                     <div id="mid-section-buttons">
                         <Button
                             children={"SHOP NOW"}
+                            onClick={clickHandler3}
+
                         />
                         <Button
                             children={"HOW TO ORDER"}
+                            onClick={clickHandler2}
                         />
                         <Button
                             children={"FIRST TIME? CLICK HERE!"}
+                            onClick={clickHandler1}
                         />
                     </div>
                 </span>

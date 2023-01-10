@@ -1,9 +1,15 @@
 import React from 'react';
 import './Navigation.css';
-import { NavLink } from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import Button from "../button/Button";
 
 function Navigation() {
+
+    const navigate = useNavigate()
+    function  clickHandler( ) {
+        navigate("/loginPage")
+    }
+
     return (
         <nav className="outer-container-navbar">
             <ul className="navbar-list">
@@ -30,6 +36,7 @@ function Navigation() {
                     <span id="login-button">
                     <Button
                         children="LOG IN"
+                        onClick={clickHandler}
                     />
                     </span>
                 </li>
