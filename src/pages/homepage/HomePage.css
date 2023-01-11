@@ -32,6 +32,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: var(--font-body);
 }
 
 .farmers-text {
@@ -83,17 +84,27 @@
     flex-direction: row;
 }
 
-#outer-bottom-section-tile {
-
-    height: 590px;
-}
 
 
 #inner-bottom-section-tile {
-    height: 590px;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+#outer-bottom-section-tile {
+    height: 900px;
 
 }
 
-.search-container form {
-    position: relative;
+.product-tiles {
+    height: 440px;
+    width: 455px;
+    color: black;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
 }

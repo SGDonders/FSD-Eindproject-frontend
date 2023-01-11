@@ -15,7 +15,9 @@ const LoginPage = () => {
 
     return (
         <body>
+
         <Navigation/>
+
         <Header
             title="Log in to your personal local farmers account"
             backgroundImage={appletree}
@@ -44,6 +46,7 @@ const LoginPage = () => {
             placeholder="password"
         >Password:
         </InputField>
+
         </section>
 
         <SectionContainer

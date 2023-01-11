@@ -1,11 +1,10 @@
 import React from 'react';
 
-const FormField = (className, clickHandler, firstName,
-                    text, name, id) => {
+const FormField = ({className, clickHandler, firstName,
+                       text, name}) => {
     return (
         <div className={className}>
-            <p>
-                Voornaam</p>
+            <p>Voornaam</p>
             <input onChange={clickHandler}
                    value={firstName}
                    type={text}

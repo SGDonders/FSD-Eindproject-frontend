@@ -5,8 +5,13 @@ import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/footer/Footer";
-import Tiles from "../../components/productTiles/ProductTile";
 import {useNavigate} from "react-router-dom";
+import ProductTile from "../../components/productTiles/ProductTile";
+import milks from '../../assets/milks.jpg'
+import fruit from '../../assets/peren.jpg'
+import vegetable from '../../assets/vegetables.jpg'
+import SectionContainer from "../../components/sectionContainer/SectionContainer";
+import tomato from "../../assets/tomato.jpg";
 
 
 const Homepage = () => {
@@ -21,7 +26,7 @@ const Homepage = () => {
     }
 
     function  clickHandler3( ) {
-        navigate("/products")
+        navigate("/productPage")
     }
 
 
@@ -85,7 +90,30 @@ const Homepage = () => {
             <section className="outer-container" id="outer-bottom-section-tile">
                 <article className="inner-container" id="inner-bottom-section-tile">
 
-                    <Tiles/>
+                    <ProductTile
+                    className="product-tile"
+                    backgroundImage={milks}
+                    title="Daiary"
+                    text="Special offers"
+                    children="Shop now"
+                    />
+
+                    <ProductTile
+                        className="product-tile"
+                        backgroundImage={fruit}
+                        title="Fruit"
+                        text="special offers"
+                        children="Shop now"
+                    />
+
+                    <ProductTile
+                        className="product-tile"
+                        backgroundImage={vegetable}
+                        title="Vegetable"
+                        text="Special offers"
+                        children="Shop now"
+                    />
+
                 </article>
             </section>
 

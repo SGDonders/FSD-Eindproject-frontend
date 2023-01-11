@@ -20,7 +20,7 @@ function Navigation() {
                 </li>
                 <li className="navbar-list-items">
                     <NavLink className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
-                             to="/Products">Products</NavLink>
+                             to="/ProductPage">Products</NavLink>
                 </li>
                 <li className="navbar-list-items">
                     <NavLink className={({ isActive }) => isActive ? 'active-menu-link' : 'default-menu-link'}
