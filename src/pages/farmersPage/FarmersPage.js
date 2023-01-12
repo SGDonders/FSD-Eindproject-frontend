@@ -1,35 +1,30 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-
+import React from 'react';
 import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
+import tractor from "../../assets/tractor.jpg";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
+import cows from "../../assets/cows.jpg";
 import Footer from "../../components/footer/Footer";
 import ProductTile from "../../components/productTiles/ProductTile";
-
-import './ProductPage.css';
-import cows from "../../assets/productPageContent/cow.jpg";
 import bellpepper from "../../assets/productPageContent/bell-peppers.avif";
 import pexelsKarolina from "../../assets/productPageContent/pexelsKarolina.jpg";
 import purpleCabbage from "../../assets/productPageContent/purpleCabbage.avif";
 import sweetPatato from "../../assets/productPageContent/sweetPotato.webp";
-import cherry from "../../assets/cherry.jpg";
 
-function ProductPage() {
-    const { id } = useParams();
-
+function FarmersPage() {
     return (
         <body>
-            <Navigation/>
 
-            <Header
-            title="Choose your products here!"
-            backgroundImage={cherry}
+        <Navigation/>
+
+        <Header
+            title="Meet our farmers"
+            backgroundImage={tractor}
             classname="outer-container"
             id="top-section"
-            />
+        />
 
-            <section className="outer-container" id="outer-container">
+        <section className="outer-container" id="outer-container">
                 <span className="inner-container" id="inner-container">
 
                     <ProductTile
@@ -71,17 +66,18 @@ function ProductPage() {
                     />
 
                 </span>
-            </section>
+        </section>
 
-            <SectionContainer
-                backgroundImage={cows}
-                classname="outer-container"
-                id="bottom-section"
-            />
+        <SectionContainer
+            backgroundImage={cows}
+            classname="outer-container"
+            id="bottom-section"
+        />
 
-            <Footer/>
-
+        <Footer/>
+            
         </body>
-    )
-}
-export default ProductPage;
+    );
+};
+
+export default FarmersPage;

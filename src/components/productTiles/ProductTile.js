@@ -2,16 +2,16 @@ import React from 'react';
 import './ProductTile.css';
 import Button from "../button/Button";
 
-const ProductTile = ({ productName, backgroundImage, price, children, className }) => (
+const ProductTile = ({ idProductName, idPrice, productName, backgroundImage, price, button, className }) => (
     <div
+        className={className}
         style={{ backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'}}
-        className={className}>
-        <h1 id="tiles-title">{productName}</h1>
-        <p id="tiles-text">{price}</p>
+        backgroundPosition: 'center'}}>
+        <h1 id={idProductName}>{productName}</h1>
+        <p id={idPrice}>{price}</p>
         <Button
-        children={children}
+        children={button}
         />
     </div>
 );

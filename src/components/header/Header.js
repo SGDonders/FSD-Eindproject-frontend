@@ -10,7 +10,7 @@ const Header = ({ title, backgroundImage, classname }) => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 color: "white",
-                fontSize: 25
+                fontSize: 28
             }}
         >
             <h1 className="inner-container">{title}</h1>

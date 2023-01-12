@@ -12,7 +12,8 @@ button {
     border-radius: 8px;
     color: white;
     border-color: #df0e62;
-    font-family: var(--font-headings);
+    font-family: var(--font-button);
+    font-weight: 900;
 }
 
 

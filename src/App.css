@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=PT+Serif&display=swap');
 
 /*CSS RESET*/
 
@@ -62,8 +64,9 @@ select {
 
 #root {
 
-    --font-headings: 'Quicksand', sans-serif;
+    --font-headings: 'PT Serif', serif;;
     --font-body: 'Roboto Condensed', sans-serif;
+    --font-button: 'Cabin', sans-serif;
 
     --page-width: 90vw;
     --page-height: 500px;

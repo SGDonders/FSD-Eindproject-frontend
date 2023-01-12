@@ -7,6 +7,7 @@ import Homepage from "./pages/homepage/Homepage";
 import ProductPage from "./pages/productPage/ProductPage";
 import RegisterPage from "./pages/registerPage/RegisterPage";
 import LoginPage from "./pages/loginPage/LoginPage";
+import FarmersPage from "./pages/farmersPage/FarmersPage";
 
 
 
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/howToOrder" element={<HowToOrder/>}/>
                 <Route path="/registerPage" element={<RegisterPage/>}/>
                 <Route path="/loginPage" element={<LoginPage/>}/>
+                <Route path="/farmerPage" element={<FarmersPage/>}/>
             </Routes>
 
 

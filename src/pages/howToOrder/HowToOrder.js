@@ -28,13 +28,13 @@ function HowToOrder() {
                 <h5 className='howToOrder-section-title'>1. Register your details</h5>
                 <p>Enter you registration details on the register form</p>
                 <h5 className="howToOrder-section-title">2. Add to chart</h5>
-                <p>Select from different kind of products the amount you want to order.</p>
+                <p>Select your farmer you want to buy products from.</p>
                 <p> Add the products to your cart</p>
                 <h5 className="howToOrder-section-title">3. sign in</h5>
                 <p>Sign into your account and select a timeframe to collect your order.</p>
                 <p>Review and accept the Term&Conditions, proceed to checkout.</p>
                 <h5 className="howToOrder-section-title">4.Collect</h5>
-                <p>Your farmer will pack your order and confirm date of sell.</p>
+                <p>Your farmer will pack your order and and send conformation of the order details.</p>
             </div>
 
             <Button id="howToOrder__button"
