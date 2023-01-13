@@ -1,0 +1,22 @@
+
+
+.howToOrder-section-title {
+    font-size: 30px;
+    font-weight: 900;
+    font-family: var(--font-headings);
+
+}
+
+#howToOrder-outer-section {
+    height: 1250px;
+}
+
+#howToOrder-inner-section {
+    font-size: 25px;
+    height: 850px;
+    font-family: var(--font-body);
+}
+
+#howToOrder__button {
+    margin-bottom: 25px;
+}

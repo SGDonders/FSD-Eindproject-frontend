@@ -1,0 +1,11 @@
+
+#outer-container__register {
+    height: 900px;
+}
+
+#regeister-button__innercontainer {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 150px;
+}
+

@@ -1,0 +1,64 @@
+
+nav {
+    position: sticky;
+    top: 0;
+    font-family: var(--font-headings);
+
+}
+
+.active-menu-link {
+    text-decoration-line: none;
+    animation: blinkingBackground 2s infinite;
+}
+
+@keyframes blinkingBackground {
+    50% {
+        color: orange;
+    }
+}
+
+.default-menu-link {
+    border-bottom: none;
+    color: whitesmoke;
+    text-decoration-line: none;
+
+}
+
+.outer-container-navbar {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: orange;
+    text-underline-style: none;
+    height: 100px;
+
+
+}
+
+.navbar-list {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    list-style: none;
+    color: orange;
+    width: 1530px;
+    margin-right: 50px;
+}
+
+.navbar-list-items {
+    font-size: 20px;
+    margin-right: 30px;
+}
+
+#nav-list-links {
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+
+
+
+
