@@ -3,7 +3,7 @@ import InputField from "../../components/inputField/InputField";
 import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/footer/Footer";
 import Button from "../../components/button/Button";
-import sheep from "../../assets/lamb.jpg";
+import brownCow from "../../assets/productPageContent/brownCow.jpg";
 import Header from "../../components/header/Header";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import beans from "../../assets/productPageContent/beans.jpg";
@@ -151,13 +151,13 @@ function RegisterPage() {
         <div className=" inner-container" id="regeister-button__innercontainer">
 
             <Button id="register__button"
-                    children={"SEND!"}/>
+                    children={"REGISTER"}/>
 
         </div>
             </span>
 
         <SectionContainer
-            backgroundImage={sheep}
+            backgroundImage={brownCow}
             classname="outer-container"
             id="bottom-section"
         />

@@ -1,0 +1,30 @@
+
+
+.counter-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.btn {
+    width: 90px;
+    height: 25px;
+    padding: 15px;
+    background-color: #df0e62;
+    border: black;
+    font-size: 25px;
+    gap: 10px;
+    border-radius: 8px;
+
+}
+
+.counter-button {
+
+}
+
+#count-value {
+    color: white;
+    margin: 12px 12px;
+}

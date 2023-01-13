@@ -8,7 +8,7 @@ import ProductTile from "../../components/productTiles/ProductTile";
 import HelperFunction from "../../helpers/HelperFunction";
 
 import './HomePage.css';
-import farmersBasketImage from '../../assets/farmers_basket.jpg'
+import farmersBasketImage from '../../assets/productPageContent/farmers_basket.jpg'
 import tile1 from '../../assets/styleImageTiles/tile1.jpg'
 import tile2 from '../../assets/styleImageTiles/tile3.jpg'
 import tile3 from '../../assets/styleImageTiles/tile2.jpg'
@@ -63,27 +63,6 @@ const Homepage = () => {
                 </span>
             </section>
 
-
-            <section className="outer-container" id="outer-farmers-section">
-                <span className="inner-container" id="inner-farmers-section">
-
-                    <div className="mid-section-farmers">
-                    <h1 className="farmers-title">Local farmers</h1>
-                    <p className="farmers-text"> Farmers carefully source products from passionate producers who share our commitment to responsible and sustainable practises.</p>
-                        </div>
-                    <div id="farmers-button">
-
-                    <Button
-                        children={"MEET OUR PRODUCERS"}
-                        onClick={() => HelperFunction(navigate, "/farmerPage")}
-                    />
-
-                        </div>
-
-                </span>
-            </section>
-
-
             <section className="outer-container" id="outer-bottom-section-tile">
                 <article className="inner-container" id="inner-bottom-section-tile">
 
@@ -113,6 +92,29 @@ const Homepage = () => {
 
                 </article>
             </section>
+
+
+            <section className="outer-container" id="outer-farmers-section">
+                <span className="inner-container" id="inner-farmers-section">
+
+                    <div className="mid-section-farmers">
+                    <h1 className="farmers-title">Local farmers</h1>
+                    <p className="farmers-text"> Farmers carefully source products from passionate producers who share our commitment to responsible and sustainable practises.</p>
+                        </div>
+                    <div id="farmers-button">
+
+                    <Button
+                        children={"MEET OUR PRODUCERS"}
+                        onClick={() => HelperFunction(navigate, "/farmerPage")}
+                    />
+
+                        </div>
+
+                </span>
+            </section>
+
+
+
 
 
             <Footer/>

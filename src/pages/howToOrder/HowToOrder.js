@@ -1,10 +1,10 @@
 import React from 'react';
 import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
-import peach from "../../assets/peach.jpg";
+import peach from "../../assets/productPageContent/peach.jpg";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import Footer from "../../components/footer/Footer";
-import chicken from "../../assets/chicken.jpg";
+import chicken from "../../assets/productPageContent/chicken.jpg";
 import './HowToOrder.css';
 import Button from "../../components/button/Button";
 

@@ -5,7 +5,7 @@ import appletree from "../../assets/appletree.jpg";
 import Footer from "../../components/footer/Footer";
 import InputField from "../../components/inputField/InputField";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import chicken from "../../assets/chicken.jpg";
+import chicken from "../../assets/productPageContent/chicken.jpg";
 import './LoginPage.css';
 
 const LoginPage = () => {

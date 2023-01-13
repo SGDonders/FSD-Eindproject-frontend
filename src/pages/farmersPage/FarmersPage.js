@@ -6,10 +6,10 @@ import SectionContainer from "../../components/sectionContainer/SectionContainer
 import cows from "../../assets/cows.jpg";
 import Footer from "../../components/footer/Footer";
 import ProductTile from "../../components/productTiles/ProductTile";
-import bellpepper from "../../assets/productPageContent/bell-peppers.avif";
-import pexelsKarolina from "../../assets/productPageContent/pexelsKarolina.jpg";
-import purpleCabbage from "../../assets/productPageContent/purpleCabbage.avif";
-import sweetPatato from "../../assets/productPageContent/sweetPotato.webp";
+import beans from "../../assets/beans.jpg";
+import milk from "../../assets/milk.jpg";
+import peren from "../../assets/peren.jpg";
+import tomato from "../../assets/tomato.jpg";
 
 function FarmersPage() {
     return (
@@ -31,7 +31,7 @@ function FarmersPage() {
                         className="
 
                         product-page-tiles"
-                        backgroundImage={bellpepper}
+                        backgroundImage={beans}
                         productName="test"
                         price="test"
                         //onclick={}
@@ -40,7 +40,16 @@ function FarmersPage() {
 
                     <ProductTile
                         className="product-page-tiles"
-                        backgroundImage={pexelsKarolina}
+                        backgroundImage={milk}
+                        productName="test"
+                        price="test"
+                        //onclick={milk}
+                        button="click here"
+                    />
+
+                    <ProductTile
+                        className="product-page-tiles"
+                        backgroundImage={peren}
                         productName="test"
                         price="test"
                         //onclick={}
@@ -49,16 +58,7 @@ function FarmersPage() {
 
                     <ProductTile
                         className="product-page-tiles"
-                        backgroundImage={purpleCabbage}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
-                    />
-
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={sweetPatato}
+                        backgroundImage={tomato}
                         productName="test"
                         price="test"
                         //onclick={}
