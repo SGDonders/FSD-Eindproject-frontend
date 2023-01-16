@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useContext} from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import HowToOrder from "./pages/howToOrder/HowToOrder";
@@ -8,11 +8,14 @@ import ProductPage from "./pages/productPage/ProductPage";
 import RegisterPage from "./pages/registerPage/RegisterPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import FarmersPage from "./pages/farmersPage/FarmersPage";
+import {AuthContext} from "./context/AuthContext";
 
 
 
 
 function App() {
+    const { isAuth } =useContext(AuthContext)
+
     return (
         <>
 

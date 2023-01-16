@@ -8,7 +8,7 @@ import Footer from "../../components/footer/Footer";
 import ProductTile from "../../components/productTiles/ProductTile";
 
 import './ProductPage.css';
-import lamb from "../../assets/productPageContent/lamb.jpg";
+import piglets from "../../assets/productPageContent/lamb.jpg";
 import cherry from "../../assets/productPageContent/cherry.jpg";
 
 import Counter from "../../components/counter/Counter";
@@ -78,7 +78,7 @@ function ProductPage() {
                     />
                     </div>
 
-                                        <div className="productPage-counter">
+                    <div className="productPage-counter">
                     <Counter
                         className="counter-button"
                         type="button"
@@ -103,7 +103,7 @@ function ProductPage() {
         </section>
 
         <SectionContainer
-            backgroundImage={lamb}
+            backgroundImage={piglets}
             classname="outer-container"
             id="bottom-section"
         />

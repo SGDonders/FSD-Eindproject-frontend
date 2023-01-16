@@ -13,6 +13,7 @@ const InputField = ({className, clickHandler,
                    name={name}
                    className={className}
                    placeholder={placeholder}
+                   id={id}
 
             />
         </label>

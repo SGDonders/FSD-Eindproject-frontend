@@ -7,12 +7,12 @@ import brownCow from "../../assets/productPageContent/brownCow.jpg";
 import Header from "../../components/header/Header";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import beans from "../../assets/productPageContent/beans.jpg";
-
-
 import './RegisterPage.css';
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
-function RegisterPage() {
+function SignUp() {
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -22,23 +22,39 @@ function RegisterPage() {
     const [email, setEmail] = useState("");
     const [userName, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const url = "http://localhost:8080"
 
+    // state voor functionaliteit
+    const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log(`
-    firstname: ${firstName}, 
-    lastname: ${lastName}, 
-    Zipcode: ${zipCode}, 
-    Address: ${address}, 
-    PhoneNumber: ${phoneNumber},
-    Email: ${email},
-    Username: ${userName},
-    Password: ${password}
+        toggleError(false);
+        toggleLoading(true);
 
-    `);
+        try {
+            await axios.post(`${url}/accounts`, {
+                firstName: firstName,
+                lastName: lastName,
+                zipCode: zipCode,
+                address: address,
+                phoneNumber: phoneNumber,
+                email: email,
+                userName: userName,
+                password: password,
+            });
+
+            navigate('/loginPage');
+        } catch(e) {
+            console.error(e);
+            toggleError(true);
+        }
+
+        toggleLoading(false);
+
     }
-
 
     return (
         <body>
@@ -52,14 +68,14 @@ function RegisterPage() {
             id="top-section"
         />
 
-        <form className="outer-container" id="outer-container__register">
+        <form onSubmit={handleSubmit} className="outer-container" id="outer-container__register">
             <section className="inner-container" id="inner-container__register">
                 <div className="register-form__innercontainer">
 
                     <InputField
                         className="register"
                         id="register__firstname"
-                        onchange={(event) => setFirstName(event.target.value)}
+                        clickHandler={(event) => setFirstName(event.target.value)}
                         value={firstName}
                         type="text"
                         name="firstname"
@@ -70,7 +86,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__lastname"
-                        onchange={(event) => setLastName(event.target.value)}
+                        clickHandler={(event) => setLastName(event.target.value)}
                         value={lastName}
                         type="text"
                         name="lastname"
@@ -81,7 +97,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__zipcode"
-                        onchange={(event) => setZipCode(event.target.value)}
+                        clickHandler={(event) => setZipCode(event.target.value)}
                         value={zipCode}
                         type="text"
                         name="zipcode"
@@ -92,7 +108,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__adress"
-                        onchange={(event) => setAddress(event.target.value)}
+                        clickHandler={(event) => setAddress(event.target.value)}
                         value={address}
                         type="text"
                         name="adress"
@@ -103,7 +119,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__phoneNumber"
-                        onchange={(event) => setPhoneNumber(event.target.value)}
+                        clickHandler={(event) => setPhoneNumber(event.target.value)}
                         value={phoneNumber}
                         type="text"
                         name="phonenumber"
@@ -114,7 +130,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__email"
-                        onchange={(event) => setEmail(event.target.value)}
+                        clickHandler={(event) => setEmail(event.target.value)}
                         value={email}
                         type="text"
                         name="email"
@@ -125,7 +141,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__username"
-                        onchange={(event) => setUsername(event.target.value)}
+                        clickHandler={(event) => setUsername(event.target.value)}
                         value={userName}
                         type="text"
                         name="username"
@@ -136,7 +152,7 @@ function RegisterPage() {
                     <InputField
                         className="register"
                         id="register__[password"
-                        onchange={(event) => setPassword(event.target.value)}
+                        clickHandler={(event) => setPassword(event.target.value)}
                         value={password}
                         type="text"
                         name="password"
@@ -145,16 +161,17 @@ function RegisterPage() {
                     </InputField>
                 </div>
             </section>
-        </form>
 
-        <span className="outer-container" id="register-button__outercontainer">
-        <div className=" inner-container" id="regeister-button__innercontainer">
+
+            <span className="outer-container" id="register-button__outercontainer">
+                <div className=" inner-container" id="regeister-button__innercontainer">
 
             <Button id="register__button"
-                    children={"REGISTER"}/>
-
-        </div>
+                    children={"REGISTER"}
+                    type="submit"/>
+                </div>
             </span>
+        </form>
 
         <SectionContainer
             backgroundImage={brownCow}
@@ -168,7 +185,7 @@ function RegisterPage() {
     );
 }
 
-export default RegisterPage;
+export default SignUp;
 
 
 

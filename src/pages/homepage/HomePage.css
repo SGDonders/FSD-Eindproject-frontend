@@ -37,7 +37,6 @@
 
 .farmers-text {
     padding: 13px;
-    color: whitesmoke;
     font-size: 20px;
     margin-bottom: 35px;
     font-family: var(--font-body);
@@ -47,7 +46,6 @@
 
 .farmers-title {
     font-family: var(--font-headings);
-    color: whitesmoke;
     padding: 13px;
 
 
@@ -75,9 +73,7 @@
 }
 
 #outer-farmers-section {
-    background-image: url("../../assets/productPageContent/piglets.jpg");
-    background-size: cover;
-    background-position: center;
+
     height: 400px;
     display: flex;
 }

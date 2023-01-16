@@ -14,6 +14,8 @@ import tile2 from '../../assets/styleImageTiles/tile3.jpg'
 import tile3 from '../../assets/styleImageTiles/tile2.jpg'
 
 import { useNavigate} from "react-router-dom";
+import SectionContainer from "../../components/sectionContainer/SectionContainer";
+import piglets from "../../assets/productPageContent/piglets.jpg";
 
 
 const Homepage = () => {
@@ -93,14 +95,12 @@ const Homepage = () => {
                 </article>
             </section>
 
-
             <section className="outer-container" id="outer-farmers-section">
                 <span className="inner-container" id="inner-farmers-section">
-
                     <div className="mid-section-farmers">
-                    <h1 className="farmers-title">Local farmers</h1>
-                    <p className="farmers-text"> Farmers carefully source products from passionate producers who share our commitment to responsible and sustainable practises.</p>
-                        </div>
+                        <h1 className="farmers-title">Local farmers</h1>
+                        <p className="farmers-text"> Farmers carefully source products from passionate producers who share our commitment to responsible and sustainable practises.</p>
+                    </div>
                     <div id="farmers-button">
 
                     <Button
@@ -109,13 +109,14 @@ const Homepage = () => {
                     />
 
                         </div>
-
                 </span>
             </section>
 
-
-
-
+            <SectionContainer
+                backgroundImage={piglets}
+                classname="outer-container"
+                id="bottom-section"
+            />
 
             <Footer/>
 
