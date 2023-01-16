@@ -13,17 +13,13 @@ function AuthContextProvider({ children }) {
     });
     const navigate = useNavigate();
 
-    // MOUNTING EFFECT
     useEffect(() => {
-        // haal de JWT op uit Local Storage
         const token = localStorage.getItem('token');
 
-        // als er WEL een token is, haal dan opnieuw de gebruikersdata op
         if (token) {
             const decoded = jwt_decode(token);
             void fetchUserData(decoded.sub, token);
         } else {
-            // als er GEEN token is doen we niks, en zetten we de status op 'done'
             toggleIsAuth({
                 isAuth: false,
                 user: null,
