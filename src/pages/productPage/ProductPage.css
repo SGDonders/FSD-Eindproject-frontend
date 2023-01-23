@@ -1,20 +1,16 @@
-.productPage-counter {
-    display: flex;
-    flex-direction: column-reverse;
-    border: 2px solid black;
+
+
+#outer-container {
+    height: auto;
+    border: 1px solid blue;
 }
 
 #inner-container {
     display: flex;
-    flex-direction: row;
-    gap: 50px;
-}
+    flex-wrap: wrap;
 
-.product-page-tiles {
-    height: 350px;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height: auto;
+    border: 1px solid red;
+
+
 }

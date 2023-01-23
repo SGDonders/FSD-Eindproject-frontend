@@ -1,20 +1,21 @@
 
+
+
+
+
 .counter-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: black;
 }
 
 .btn {
-    width: 90px;
+    width: 50px;
     height: 25px;
     gap: 10px;
     padding: 15px;
-    border-radius: 8px;
-    border: black;
-    background-color: var(--color-button);
+    border-radius: 6px;
     font-size: 25px;
 }
 
@@ -23,6 +24,41 @@
 }
 
 #count-value {
-    color: white;
-    margin: 12px 12px;
+    display: flex;
+    justify-content: center;
+    margin: 5px 5px;
+    font-size: 20px;
+}
+
+.container-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-img {
+    height: 100px;
+    width: 100px;
+    clip-path: circle(50% at 50% 50%);
+    margin-right: 35px;
+}
+
+.container-product__counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: var(--font-headings);
+    gap: 10px;
+    margin: 20px;
+
+
+}
+
+.container-button {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.count__buttons {
+    display: flex;
 }

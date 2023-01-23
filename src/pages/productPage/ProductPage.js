@@ -3,24 +3,24 @@ import {useParams} from "react-router-dom";
 
 import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
+import ProductCounter from "../../components/counter/Counter";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import Footer from "../../components/footer/Footer";
-import ProductTile from "../../components/productTiles/ProductTile";
 
 import './ProductPage.css';
+
 import piglets from "../../assets/productPageContent/lamb.jpg";
+import tomato from "../../assets/tomato.jpg";
 import cherry from "../../assets/productPageContent/cherry.jpg";
 
-import Counter from "../../components/counter/Counter";
-import milk from "../../assets/milk.jpg";
+
 
 function ProductPage() {
     const {id} = useParams();
 
-    const [basis, setBasis] = useState(0)
-
-    function reset() {
-        setBasis(0)
+    const [counter, setCounter] =useState(0)
+    function resetCounter() {
+        setCounter(0)
     }
 
     return (
@@ -39,65 +39,58 @@ function ProductPage() {
 
 
                     <div className="productPage-counter">
-                    <Counter
-                        className="counter-button"
+                    <ProductCounter
+                        img={tomato}
                         type="button"
-                        countValue={basis}
-                        decrement={() => setBasis(basis => basis - 1)}
-                        increment={() => setBasis(basis => basis + 1)}
-                        isDisabled={(basis === 0)}
-                    />
+                        title="product"
+                        price="price"
+                        stock="available stock"
 
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={milk}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
+                        countValue={counter}
+                        decrement={() => setCounter(counter => counter -1) }
+                        increment={() => setCounter(counter => counter +1) }
+                        isDisabled={(counter === 0)}
                     />
-                    </div>
-
-                    <div className="productPage-counter">
-                    <Counter
-                        className="counter-button"
+                    <ProductCounter
+                        img={tomato}
                         type="button"
-                        countValue={basis}
-                        decrement={() => setBasis(basis => basis - 1)}
-                        increment={() => setBasis(basis => basis + 1)}
-                        isDisabled={(basis === 0)}
+                        title="product"
+                        price="price"
+                        stock="available stock"
+
+                        countValue={counter}
+                        decrement={() => setCounter(counter => counter -1) }
+                        increment={() => setCounter(counter => counter +1) }
+                        isDisabled={(counter === 0)}
                     />
 
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={milk}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
-                    />
-                    </div>
-
-                    <div className="productPage-counter">
-                    <Counter
-                        className="counter-button"
+                    <ProductCounter
+                        img={tomato}
                         type="button"
-                        countValue={basis}
-                        decrement={() => setBasis(basis => basis - 1)}
-                        increment={() => setBasis(basis => basis + 1)}
-                        isDisabled={(basis === 0)}
+                        title="product"
+                        price="price"
+                        stock="available stock"
+
+                        countValue={counter}
+                        decrement={() => setCounter(counter => counter -1) }
+                        increment={() => setCounter(counter => counter +1) }
+                        isDisabled={(counter === 0)}
                     />
 
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={milk}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
+                    <ProductCounter
+                        img={tomato}
+                        type="button"
+                        title="product"
+                        price="price"
+                        stock="available stock"
+
+                        countValue={counter}
+                        decrement={() => setCounter(counter => counter -1) }
+                        increment={() => setCounter(counter => counter +1) }
+                        isDisabled={(counter === 0)}
                     />
+
                     </div>
-
 
                 </span>
         </section>
