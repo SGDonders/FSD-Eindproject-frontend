@@ -1,30 +1,34 @@
-import React, {useState} from 'react';
-import InputField from "../../components/inputField/InputField";
-import Navigation from "../../components/navigation/Navigation";
-import Footer from "../../components/footer/Footer";
-import Button from "../../components/button/Button";
-import brownCow from "../../assets/productPageContent/brownCow.jpg";
-import Header from "../../components/header/Header";
-import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import beans from "../../assets/productPageContent/beans.jpg";
-import './RegisterPage.css';
-import axios from "axios";
+import React, {useContext, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+
+import './RegisterPage.css';
+
+import Navigation from "../../components/navigation/Navigation";
+import Header from "../../components/header/Header";
+import InputField from "../../components/inputField/InputField";
+import Button from "../../components/button/Button";
+import SectionContainer from "../../components/sectionContainer/SectionContainer";
+import Footer from "../../components/footer/Footer";
+
+import brownCow from "../../assets/productPageContent/brownCow.jpg";
+import beans from "../../assets/productPageContent/beans.jpg";
+
 
 
 function SignUp() {
 
+    const [userName, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [zipCode, setZipCode] = useState("")
     const [address, setAddress] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
-    const [userName, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const url = "http://localhost:8080"
 
-    // state voor functionaliteit
+    const url = "http://localhost:8080"
+    const [showPopup, setShowPopup] = useState(false);
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const navigate = useNavigate();
@@ -34,26 +38,31 @@ function SignUp() {
         toggleError(false);
         toggleLoading(true);
 
+        //Check for data feed.
+        //console.log(firstName, lastName, zipCode, address, phoneNumber, email)
+
         try {
             await axios.post(`${url}/accounts`, {
+
+                username: userName,
+                password: password,
+
                 firstName: firstName,
                 lastName: lastName,
                 zipCode: zipCode,
                 address: address,
                 phoneNumber: phoneNumber,
-                email: email,
-                userName: userName,
-                password: password,
+                email: email
             });
 
-            navigate('/loginPage');
-        } catch(e) {
+        } catch (e) {
             console.error(e);
             toggleError(true);
+            console.log("Axios request cancelled")
         }
 
         toggleLoading(false);
-
+        console.log("User registered")
     }
 
     return (
@@ -71,6 +80,28 @@ function SignUp() {
         <form onSubmit={handleSubmit} className="outer-container" id="outer-container__register">
             <section className="inner-container" id="inner-container__register">
                 <div className="register-form__innercontainer">
+
+                    <InputField
+                        className="register"
+                        id="register__username"
+                        clickHandler={(event) => setUsername(event.target.value)}
+                        value={userName}
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                    > New username:
+                    </InputField>
+
+                    <InputField
+                        className="register"
+                        id="register__password"
+                        clickHandler={(event) => setPassword(event.target.value)}
+                        value={password}
+                        type="text"
+                        name="password"
+                        placeholder="password"
+                    > new password:
+                    </InputField>
 
                     <InputField
                         className="register"
@@ -138,27 +169,6 @@ function SignUp() {
                     > Email:
                     </InputField>
 
-                    <InputField
-                        className="register"
-                        id="register__username"
-                        clickHandler={(event) => setUsername(event.target.value)}
-                        value={userName}
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                    > New username:
-                    </InputField>
-
-                    <InputField
-                        className="register"
-                        id="register__[password"
-                        clickHandler={(event) => setPassword(event.target.value)}
-                        value={password}
-                        type="text"
-                        name="password"
-                        placeholder="password"
-                    > new password:
-                    </InputField>
                 </div>
             </section>
 
@@ -168,7 +178,17 @@ function SignUp() {
 
             <Button id="register__button"
                     children={"REGISTER"}
-                    type="submit"/>
+                    type="submit"
+                    clickhandler={() => setShowPopup(true)}/>
+                    {showPopup && (
+                        <div className="popup">
+                            <div className="popup-inner">
+                                <h1>Welcome</h1>
+                                <p>You're registered now!</p>
+                                <button onClick={() => setShowPopup(false)}>OK</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </span>
         </form>

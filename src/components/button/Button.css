@@ -1,19 +1,21 @@
 
-
-
-
 button {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 50px;
     width: 200px;
-    background-color: #df0e62;
-    border-radius: 8px;
-    color: white;
-    border-color: #df0e62;
-    font-family: var(--font-button);
     font-weight: 900;
+    border-radius: 8px;
+    border-color: var(--color-button);
+    background-color: var(--color-button);
+    font-family: var(--font-button);
+    color: var(--color-button-text);
+}
+
+button:active {
+    background-color: var(--color-button-active);
+    border-color: var(--color-button-active);
 }
 
 

@@ -1,96 +1,110 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext( {} );
 
-function AuthContextProvider({ children }) {
-    const [isAuth, toggleIsAuth] = useState({
+function AuthContextProvider( { children } ) {
+
+    const [ auth, setAuth ] = useState( {
         isAuth: false,
         user: null,
-        status: 'pending',
-    });
-    const navigate = useNavigate();
+        status: "pending"
+    } );
+    const navigate = useNavigate()
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
+    useEffect( () => {
+        // haal de JWT op uit Local Storage
+        const storedToken = localStorage.getItem( 'token' )
 
-        if (token) {
-            const decoded = jwt_decode(token);
-            void fetchUserData(decoded.sub, token);
+
+        // als er WEL een token is, haal dan opnieuw de gebruikersdata op
+        if ( storedToken ) {
+            const decodedToken = jwt_decode( storedToken )
+
+            if ( Math.floor( Date.now() / 1000 ) < decodedToken.exp ) {
+                console.log( "De gebruiker is NOG STEEDS ingelogd 🔓" )
+                void fetchUserData( storedToken, decodedToken.sub )
+            } else  {
+                console.log( "De token is verlopen" )
+                localStorage.removeItem( 'token' )
+            }
         } else {
-            toggleIsAuth({
+            // als er GEEN token is doen we niks
+            setAuth( {
+                ...auth,
                 isAuth: false,
                 user: null,
-                status: 'done',
-            });
+                status: "done"
+            } )
         }
-    }, []);
+    }, [] )
 
-    function login(JWT) {
+    function login( jwt ) {
+        console.log( "De gebruiker is ingelogd 🔓" )
+        localStorage.setItem( 'token', jwt )
+        const decodedToken = jwt_decode( jwt );
 
-        localStorage.setItem('token', JWT);
-        const decoded = jwt_decode(JWT);
-        void fetchUserData(decoded.sub, JWT, '/');
+        void fetchUserData( jwt, decodedToken.sub, "/" )
+    }
+
+    async function fetchUserData( jwt, id, redirect ) {
+        try {
+            const response = await axios.get( `http://localhost:8080/users/${ id }`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${ jwt }`,
+                }
+            } )
+            setAuth( {
+                ...auth,
+                isAuth: true,
+                user: {
+                    email: response.data.email,
+                    id: response.data.id,
+                    username: response.data.username
+                },
+                status: "done"
+            } )
+            if ( redirect ) {
+                navigate( redirect )
+            }
+            console.log( response )
+        } catch ( e ) {
+            console.error( e )
+            setAuth( {
+                ...auth,
+                status: "done"
+            } )
+        }
     }
 
     function logout() {
-        localStorage.clear();
-        toggleIsAuth({
+        console.log( "De gebruiker is uitgelogd 🔒" )
+        localStorage.removeItem( 'token' )
+        setAuth( {
+            ...auth,
             isAuth: false,
             user: null,
-            status: 'done',
-        });
-        console.log('Gebruiker is uitgelogd!');
-        navigate('/');
-    }
-
-
-    async function fetchUserData(id, token, redirectUrl) {
-        try {
-            const result = await axios.get(`http://localhost:3000/600/users/${id}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            toggleIsAuth({
-                ...isAuth,
-                isAuth: true,
-                user: {
-                    username: result.data.username,
-                    email: result.data.email,
-                    id: result.data.id,
-                },
-                status: 'done',
-            });
-
-            if (redirectUrl) {
-                navigate(redirectUrl);
-            }
-
-        } catch (e) {
-            console.error(e);
-            toggleIsAuth({
-                isAuth: false,
-                user: null,
-                status: 'done',
-            });
-        }
+            status: "done"
+        } )
+        navigate( "/" )
     }
 
     const contextData = {
-        isAuth: isAuth.isAuth,
-        user: isAuth.user,
+        isAuth: auth.isAuth,
+        user: auth.user,
+        status: auth.status,
         login: login,
-        logout: logout,
-    };
+        logout: logout
+    }
+
     return (
-        <AuthContext.Provider value={contextData}>
-            {isAuth.status === 'done' ? children : <p>Loading...</p>}
+        <AuthContext.Provider value={ contextData }>
+            { auth.status === "done" ? children : <p>Loading...</p> }
         </AuthContext.Provider>
-    );
+    )
 }
 
 export default AuthContextProvider;

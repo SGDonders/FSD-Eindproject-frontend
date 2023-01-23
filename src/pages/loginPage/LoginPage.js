@@ -1,38 +1,42 @@
 import React, {useContext, useState} from 'react';
+import {AuthContext} from "../../context/AuthContext";
+import axios from "axios";
+
+import './LoginPage.css';
+
 import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
-import appletree from "../../assets/appletree.jpg";
-import Footer from "../../components/footer/Footer";
 import InputField from "../../components/inputField/InputField";
-import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import chicken from "../../assets/productPageContent/chicken.jpg";
-import './LoginPage.css';
-import axios from "axios";
-import {AuthContext} from "../../context/AuthContext";
 import Button from "../../components/button/Button";
+import SectionContainer from "../../components/sectionContainer/SectionContainer";
+import Footer from "../../components/footer/Footer";
+
+import appletree from "../../assets/appletree.jpg";
+import chicken from "../../assets/productPageContent/chicken.jpg";
 
 
 
 function SignIn() {
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState(' ')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
     const [error, toggleError] = useState(false);
     const {login} = useContext(AuthContext);
 
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         toggleError(false);
 
+        console.log(username, password)
+
         try {
-            const result = await axios.post('http://localhost:8080/login', {
-                email: email,
-                password: password,
-                username: username
+            const result = await axios.post('http://localhost:8080/authenticate', {
+                username: username,
+                password: password
+
             });
             console.log(result.data);
 
-            login(result.data.accessToken);
+            login(result.data.jwt);
 
         } catch (e) {
             console.error(e);
@@ -63,7 +67,7 @@ function SignIn() {
                 value={username}
                 type="text"
                 name="username"
-                placeholder="Username"
+                placeholder="username"
             >Username:
             </InputField>
 
@@ -78,21 +82,10 @@ function SignIn() {
             >Password:
             </InputField>
 
-            <InputField
-                className="login"
-                id="login__email"
-                clickHandler={(e) => setEmail(e.target.value)}
-                value={email}
-                type="text"
-                name="email"
-                placeholder="email"
-            >Email:
-            </InputField>
-
-
             <Button id="login-btn"
+                    type="submit"
+                    clickhandler={handleSubmit}
                     children={"LOG IN"}/>
-
 
         </section>
         </form>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
@@ -16,11 +16,14 @@ import tile3 from '../../assets/styleImageTiles/tile2.jpg'
 import { useNavigate} from "react-router-dom";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import piglets from "../../assets/productPageContent/piglets.jpg";
+import {AuthContext} from "../../context/AuthContext";
 
 
 const Homepage = () => {
-
+    const {isAuth, } = useContext(AuthContext)
     const navigate = useNavigate()
+
+
 
     return (
         <>
@@ -48,17 +51,17 @@ const Homepage = () => {
 
                     <div id="mid-section-buttons">
 
-                        <Button
+                        {!isAuth &&<Button
                             children={"SHOP NOW"}
-                            onClick={() => HelperFunction(navigate, "/productPage")}
-                        />
+                            clickhandler={() => HelperFunction(navigate, "/productPage")}
+                        />}
                         <Button
                             children={"HOW TO ORDER"}
-                            onClick={() => HelperFunction(navigate, "/howToOrder")}
+                            clickhandler={() => HelperFunction(navigate, "/howToOrder")}
                         />
                         <Button
                             children={"FIRST TIME? CLICK HERE"}
-                            onClick={() => HelperFunction(navigate, "/registerPage")}
+                            clickhandler={() => HelperFunction(navigate, "/registerPage")}
                         />
 
                     </div>
@@ -105,7 +108,7 @@ const Homepage = () => {
 
                     <Button
                         children={"MEET OUR PRODUCERS"}
-                        onClick={() => HelperFunction(navigate, "/farmerPage")}
+                        clickhandler={() => HelperFunction(navigate, "/farmerPage")}
                     />
 
                         </div>

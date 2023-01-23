@@ -6,12 +6,14 @@ import {AuthContext} from "../../context/AuthContext";
 
 function Navigation() {
 
-    const {isAuth} = useContext(AuthContext)
+    const {isAuth, logout} = useContext(AuthContext)
     const navigate = useNavigate()
 
     function clickHandler() {
         navigate("/loginPage")
     }
+
+
 
     return (
         <nav className="outer-container-navbar">
@@ -42,8 +44,14 @@ function Navigation() {
 
                 <li>
                     <span id="login-button">
-                        {!isAuth && <Button children="LOG IN" onClick={clickHandler}/>}
-                        {isAuth && <Button children="LOG OUT" onClick={clickHandler}/>}
+                        {!isAuth &&
+                            <Button children="LOG IN"
+                                    clickhandler={clickHandler}/>}
+                        {isAuth &&
+                            <Button
+                                children="LOG OUT"
+                                type="button"
+                                clickhandler={logout}/>}
                     </span>
                 </li>
             </ul>

@@ -41,7 +41,7 @@ function HowToOrder() {
                     children={"SHOP NOW!"}
                     />
 
-            <h6>Any questions, Fuck off!</h6>
+            <h6>Any questions, contact us!</h6>
 
         </section>
 

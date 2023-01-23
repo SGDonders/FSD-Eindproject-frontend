@@ -1,11 +1,67 @@
 
 #outer-container__register {
     height: 900px;
+    font-family: var(--font-headings);
+}
+
+#inner-container__register {
+    height: 900px
 }
 
 #regeister-button__innercontainer {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 150px;
+
 }
 
+.register-button__outercontainer {
+    height: 500px;
+
+}
+.register-form__innercontainer {
+
+}
+
+
+
+
+#register-button__outercontainer {
+    height: 100px;
+}
+
+.register-form__innercontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register {
+    width: 400px;
+    height: 50px;
+    font-family: var(--font-body);
+    font-size: 15px;
+
+
+}
+
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-inner {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}

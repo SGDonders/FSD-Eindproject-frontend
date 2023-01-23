@@ -1,3 +1,55 @@
+#inner-button-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 800px;
+}
+
+#outer-button-section {
+    height: 500px;
+}
+
+#outer-farmers-section {
+    display: flex;
+    height: 400px;
+}
+
+#inner-farmers-section {
+    display: flex;
+    flex-direction: row;
+}
+
+#inner-bottom-section-tile {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    height: 600px;
+}
+
+#outer-bottom-section-tile {
+    height: 600px;
+}
+
+.product-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+    height: 400px;
+    width: 400px;
+    border-radius: 25px;
+    color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
+                rgba(0, 0, 0, 0.07) 0px 2px 4px,
+                rgba(0, 0, 0, 0.07) 0px 4px 8px,
+                rgba(0, 0, 0, 0.07) 0px 8px 16px,
+                rgba(0, 0, 0, 0.07) 0px 16px 32px,
+                rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    clip-path: circle(50% at 50% 50%);
+    font-family: var(--font-headings);
+    font-size: 27px;
+}
 
 .mid-section {
     height: 400px;
@@ -26,96 +78,33 @@
 }
 
 .mid-section-farmers {
-    height: 400px;
-    width: 1100px;
-    margin-right: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 400px;
+    width: 1100px;
+    margin-right: 70px;
     font-family: var(--font-body);
 }
 
 .farmers-text {
     padding: 13px;
-    font-size: 20px;
     margin-bottom: 35px;
     font-family: var(--font-body);
-
+    font-size: 20px;
 
 }
 
 .farmers-title {
-    font-family: var(--font-headings);
     padding: 13px;
-
-
-
+    font-family: var(--font-headings);
 }
 
 .mid-section-title {
-    font-family: var(--font-headings);
     padding: 13px;
-
-}
-
-#inner-button-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: whitesmoke;
-    height: 800px;
-
-}
-
-#outer-button-section {
-    height: 500px;
-    background-color: whitesmoke;
-}
-
-#outer-farmers-section {
-
-    height: 400px;
-    display: flex;
-}
-
-#inner-farmers-section {
-    display: flex;
-    flex-direction: row;
-}
-
-
-
-#inner-bottom-section-tile {
-    height: 600px;
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-}
-
-#outer-bottom-section-tile {
-    height: 600px;
-
-}
-
-.product-tile {
     font-family: var(--font-headings);
-    height: 400px;
-    width: 400px;
-    color: whitesmoke;
-    font-size: 27px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 90px;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
-                rgba(0, 0, 0, 0.07) 0px 2px 4px,
-                rgba(0, 0, 0, 0.07) 0px 4px 8px,
-                rgba(0, 0, 0, 0.07) 0px 8px 16px,
-                rgba(0, 0, 0, 0.07) 0px 16px 32px,
-                rgba(0, 0, 0, 0.07) 0px 32px 64px;
-    clip-path: circle(50% at 50% 50%);
-
 }
+
+
+
 

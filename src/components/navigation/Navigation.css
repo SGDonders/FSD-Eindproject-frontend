@@ -3,7 +3,6 @@ nav {
     position: sticky;
     top: 0;
     font-family: var(--font-headings);
-
 }
 
 .active-menu-link {
@@ -12,8 +11,7 @@ nav {
 }
 
 @keyframes blinkingBackground {
-    50% {
-        color: orange;
+    50% {color: orange;
     }
 }
 
@@ -21,39 +19,35 @@ nav {
     border-bottom: none;
     color: whitesmoke;
     text-decoration-line: none;
-
 }
 
 .outer-container-navbar {
     display: flex;
     justify-content: center;
-    background-color: black;
-    color: orange;
-    text-underline-style: none;
     height: 100px;
-
-
+    text-underline-style: none;
+    background-color: var(--background-color-navbar);
+    color: orange;
 }
 
 .navbar-list {
     display: flex;
     justify-content: space-between;
     align-self: center;
-    list-style: none;
-    color: orange;
     width: 1530px;
     margin-right: 50px;
+    list-style: none;
+    color: orange;
 }
 
 .navbar-list-items {
-    font-size: 20px;
     margin-right: 30px;
+    font-size: 20px;
 }
 
 #nav-list-links {
     display: flex;
     align-items: center;
-
 }
 
 
