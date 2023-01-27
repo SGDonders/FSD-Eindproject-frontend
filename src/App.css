@@ -68,7 +68,7 @@ select {
 
     --background-color-navbar: black;
     --color-header-text: white;
-    --background-color-mid-section: #f5f3f4;
+    --background-color-section: #f5f3f4;
     --color-button: #ff0054 ;
     --color-button-text: white;
     --color-button-active: darkblue;
@@ -89,7 +89,9 @@ select {
     height: var(--page-height);
     width: 100vw;
     background-color: var(
-            --background-color-mid-section);
+            --background-color-section);
+
+    /*border: 2px solid blue;*/
 
 }
 
@@ -100,4 +102,6 @@ select {
     justify-content: center;
     height: var(--page-height);
     width: 1600px;
+    /*border: 2px solid mediumpurple;*/
+
 }

@@ -1,4 +1,8 @@
 import React, {useContext} from 'react';
+import {AuthContext} from "../../context/AuthContext";
+import './HomePage.css';
+import { useNavigate} from "react-router-dom";
+
 
 import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
@@ -6,17 +10,15 @@ import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/footer/Footer";
 import ProductTile from "../../components/productTiles/ProductTile";
 import HelperFunction from "../../helpers/HelperFunction";
-
-import './HomePage.css';
-import farmersBasketImage from '../../assets/productPageContent/farmers_basket.jpg'
-import tile1 from '../../assets/styleImageTiles/tile1.jpg'
-import tile2 from '../../assets/styleImageTiles/tile3.jpg'
-import tile3 from '../../assets/styleImageTiles/tile2.jpg'
-
-import { useNavigate} from "react-router-dom";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import piglets from "../../assets/productPageContent/piglets.jpg";
-import {AuthContext} from "../../context/AuthContext";
+
+
+import farmersBasketImage from '../../assets/pageContent/farmers_basket.jpg';
+import tile1 from '../../assets/styleImageTiles/tile1.jpg';
+import tile2 from '../../assets/styleImageTiles/tile3.jpg';
+import tile3 from '../../assets/styleImageTiles/tile2.jpg';
+import piglets from "../../assets/pageContent/piglets.jpg";
+
 
 
 const Homepage = () => {
@@ -27,9 +29,11 @@ const Homepage = () => {
 
     return (
         <>
-            <body>
+
 
             <Navigation/>
+
+            <main>
 
             <Header
                 title="Get your fresh fruits and vegetables straight from local farmers."
@@ -51,7 +55,7 @@ const Homepage = () => {
 
                     <div id="mid-section-buttons">
 
-                        {!isAuth &&<Button
+                        {isAuth &&<Button
                             children={"SHOP NOW"}
                             clickhandler={() => HelperFunction(navigate, "/productPage")}
                         />}
@@ -121,9 +125,10 @@ const Homepage = () => {
                 id="bottom-section"
             />
 
+            </main>
+
             <Footer/>
 
-            </body>
         </>
     );
 };

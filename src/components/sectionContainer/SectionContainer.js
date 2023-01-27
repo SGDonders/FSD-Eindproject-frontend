@@ -1,20 +1,22 @@
 import React from 'react';
 import './SectionContainer.css';
 
-const SectionContainer = ({ title, backgroundImage, classname, txt }) => {
+const SectionContainer = ({ container, title, backgroundImage, classname, id, txt, rollingText }) => {
     return (
         <div
-            className={classname}
+            className={classname} id={id}
             style={{
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                color: "white",
+                color: "blueviolet",
                 fontSize: 22
+
             }}
+
         >
-            <h1 className="inner-container">{title}</h1>
-            <p>{txt}</p>
+            <h1 className={container} id={rollingText}>{title}</h1>
+            <p >{txt}</p>
         </div>
     );
 };

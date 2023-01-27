@@ -1,5 +1,8 @@
-import React, {useState} from "react";
-import {useParams} from "react-router-dom";
+import React, {useContext, useEffect, useState} from "react";
+import axios, {Axios} from "axios";
+import {AuthContext} from "../../context/AuthContext";
+
+import './ProductPage.css';
 
 import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
@@ -7,103 +10,122 @@ import ProductCounter from "../../components/counter/Counter";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import Footer from "../../components/footer/Footer";
 
-import './ProductPage.css';
-
-import piglets from "../../assets/productPageContent/lamb.jpg";
-import tomato from "../../assets/tomato.jpg";
-import cherry from "../../assets/productPageContent/cherry.jpg";
-
+import piglets from "../../assets/pageContent/lamb.jpg";
+import tomato from "../../assets/ProductContent/productContent/saint-remy.jpg";
+import cherry from "../../assets/pageContent/cherry.jpg";
 
 
 function ProductPage() {
-    const {id} = useParams();
 
-    const [counter, setCounter] =useState(0)
     function resetCounter() {
         setCounter(0)
     }
 
+    const [productName, setProductName] = useState("")
+    const [price, setPrice] = useState("")
+    const [availableStock, setAvailableStock] = useState("")
+    const [category, setCategory] = useState("")
+
+    const [counter, setCounter] = useState(0)
+    const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const [list, setList] = useState([]);
+    const {authAxios} = useContext(AuthContext);
+
+    useEffect(() => {
+        async function fetchProducts() {
+
+            try {
+                const response = await axios.get(`http://localhost:8080/product`);
+                setList(response.data);
+                console.log(response)
+
+            } catch (e) {
+                if (axios.isCancel(e)) {
+                    console.log('The axios request was cancelled')
+                } else {
+                    console.error(e)
+                }
+            }
+        }
+
+        void fetchProducts()
+    }, [authAxios]);
+
+
     return (
-        <body>
-        <Navigation/>
+        <>
+            <Navigation/>
 
-        <Header
-            title="Choose your products here!"
-            backgroundImage={cherry}
-            classname="outer-container"
-            id="top-section"
-        />
+            <main>
 
-        <section className="outer-container" id="outer-container">
+                <Header
+                    title="Choose your products here!"
+                    backgroundImage={cherry}
+                    classname="outer-container"
+                    id="top-section"
+                />
+
+                <SectionContainer
+                    classname="outer-container"
+                    id="intro-section"
+                    title="Fresh daily products!"
+
+                />
+
+                <section>
+
+
+
+
+                </section>
+
+                <section className="outer-container" id="outer-container">
                 <span className="inner-container" id="inner-container">
 
+                    {Object.keys(list).length > 0 &&
+                        <ul className="productPage-counter">
+                            {list.map((product) => {
+                                return (
+                                    <ProductCounter
+                                        img={tomato}
+                                        type="button"
+                                        title={product.productName}
+                                        price={product.price}
+                                        stock={product.availableStock}
+                                        key={product.productName}
 
-                    <div className="productPage-counter">
-                    <ProductCounter
-                        img={tomato}
-                        type="button"
-                        title="product"
-                        price="price"
-                        stock="available stock"
 
-                        countValue={counter}
-                        decrement={() => setCounter(counter => counter -1) }
-                        increment={() => setCounter(counter => counter +1) }
-                        isDisabled={(counter === 0)}
-                    />
-                    <ProductCounter
-                        img={tomato}
-                        type="button"
-                        title="product"
-                        price="price"
-                        stock="available stock"
+                                        countValue={counter}
+                                        decrement={() => setCounter(counter => counter - 1)}
+                                        increment={() => setCounter(counter => counter + 1)}
+                                        isDisabled={(counter === 0)}
+                                    />
+                                )
+                            })
+                            }
 
-                        countValue={counter}
-                        decrement={() => setCounter(counter => counter -1) }
-                        increment={() => setCounter(counter => counter +1) }
-                        isDisabled={(counter === 0)}
-                    />
-
-                    <ProductCounter
-                        img={tomato}
-                        type="button"
-                        title="product"
-                        price="price"
-                        stock="available stock"
-
-                        countValue={counter}
-                        decrement={() => setCounter(counter => counter -1) }
-                        increment={() => setCounter(counter => counter +1) }
-                        isDisabled={(counter === 0)}
-                    />
-
-                    <ProductCounter
-                        img={tomato}
-                        type="button"
-                        title="product"
-                        price="price"
-                        stock="available stock"
-
-                        countValue={counter}
-                        decrement={() => setCounter(counter => counter -1) }
-                        increment={() => setCounter(counter => counter +1) }
-                        isDisabled={(counter === 0)}
-                    />
-
-                    </div>
-
+                        </ul>
+                    }
                 </span>
-        </section>
+                </section>
 
-        <SectionContainer
-            backgroundImage={piglets}
-            classname="outer-container"
-            id="bottom-section"
-        />
+                <SectionContainer
+                    classname="outer-container"
+                    id="outro-section"
+                />
 
-        <Footer/>
+                <SectionContainer
+                    backgroundImage={piglets}
+                    classname="outer-container"
+                    id="bottom-section"
+                />
 
-        </body>
+            </main>
+
+            <Footer/>
+
+        </>
     )
 }
 

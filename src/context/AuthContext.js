@@ -15,11 +15,8 @@ function AuthContextProvider( { children } ) {
     const navigate = useNavigate()
 
     useEffect( () => {
-        // haal de JWT op uit Local Storage
         const storedToken = localStorage.getItem( 'token' )
 
-
-        // als er WEL een token is, haal dan opnieuw de gebruikersdata op
         if ( storedToken ) {
             const decodedToken = jwt_decode( storedToken )
 
@@ -31,7 +28,6 @@ function AuthContextProvider( { children } ) {
                 localStorage.removeItem( 'token' )
             }
         } else {
-            // als er GEEN token is doen we niks
             setAuth( {
                 ...auth,
                 isAuth: false,

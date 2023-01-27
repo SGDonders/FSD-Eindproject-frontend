@@ -2,9 +2,7 @@ import './Counter.css'
 import React, {useState} from 'react';
 
 
-const ProductCounter = ({
-                            title, price, stock, img, description, type, decrement, isDisabled, countValue, increment
-                        }) => {
+const ProductCounter = ({ title, price, stock, img, description, type, decrement, isDisabled, countValue, increment }) => {
 
 
     return (
@@ -18,10 +16,10 @@ const ProductCounter = ({
                          alt={description}/>
                 </div>
 
-                <div className="container-button">
-                    <h3>{title}</h3>
-                    <p>{price}</p>
-                    <p>{stock}</p>
+                <div className="container-info">
+                    <h3>Productname: {title}</h3>
+                    <p>Price: € {price} </p>
+                    <p>Quantity: {stock}</p>
                 </div>
 
                  <span className="count__buttons">
