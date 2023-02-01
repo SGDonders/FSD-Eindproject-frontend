@@ -39,7 +39,7 @@ function SignIn() {
             console.log(result.data);
 
             login(result.data.jwt);
-            navigate("/homePage");
+            navigate("/");
 
 
         } catch (e) {

@@ -34,8 +34,7 @@ function SignUp() {
     const {isAuth,} = useContext(AuthContext)
 
     function finishRegister() {
-        setShowPopup(false)
-        navigate("/homePage");
+        navigate("/loginPage");
     }
 
     async function handleSubmit(e) {
@@ -44,7 +43,7 @@ function SignUp() {
         toggleLoading(true);
 
         //Check for data feed.
-        //console.log(firstName, lastName, zipCode, address, phoneNumber, email)
+        // console.log(userName, password, lastName, zipCode, address, phoneNumber, email)
 
         try {
             await axios.post(`${url}/accounts`, {
@@ -186,16 +185,8 @@ function SignUp() {
             {!isAuth && <Button id="register__button"
                                 children={"REGISTER"}
                                 type="submit"
-                                clickhandler={() => setShowPopup(true)}/>}
-                    {showPopup && (
-                        <div className="popup">
-                            <div className="popup-inner">
-                                <h1>Welcome</h1>
-                                <p>You're registered now!</p>
-                                <button onClick={() => finishRegister()}>OK</button>
-                            </div>
-                        </div>
-                    )}
+                                />}
+
                 </div>
             </span>
                 </form>

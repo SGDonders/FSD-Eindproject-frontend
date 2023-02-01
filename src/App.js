@@ -9,6 +9,7 @@ import RegisterPage from "./pages/registerPage/RegisterPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import FarmersPage from "./pages/farmersPage/FarmersPage";
 import {AuthContext} from "./context/AuthContext";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 
 
 
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/registerPage" element={<RegisterPage/>}/>
                 <Route path="/loginPage" element={<LoginPage/>}/>
                 <Route path="/farmerPage" element={<FarmersPage/>}/>
+                <Route path="/profilePage" element={<ProfilePage/>}/>
             </Routes>
 
 

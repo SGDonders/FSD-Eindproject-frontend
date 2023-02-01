@@ -7,13 +7,9 @@ nav {
 
 .active-menu-link {
     text-decoration-line: none;
-    animation: blinkingBackground 2s infinite;
+    color: darkorange;
 }
 
-@keyframes blinkingBackground {
-    50% {color: orange;
-    }
-}
 
 .default-menu-link {
     border-bottom: none;

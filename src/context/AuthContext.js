@@ -7,9 +7,10 @@ export const AuthContext = createContext( {} );
 
 function AuthContextProvider( { children } ) {
 
+    const [data, setData] = useState([])
     const [ auth, setAuth ] = useState( {
         isAuth: false,
-        user: null,
+        account: null,
         status: "pending"
     } );
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ function AuthContextProvider( { children } ) {
             setAuth( {
                 ...auth,
                 isAuth: false,
-                user: null,
+                account: null,
                 status: "done"
             } )
         }
@@ -47,19 +48,26 @@ function AuthContextProvider( { children } ) {
 
     async function fetchUserData( jwt, id, redirect ) {
         try {
-            const response = await axios.get( `http://localhost:8080/users/${ id }`, {
+            const response = await axios.get( `http://localhost:8080/accounts/${ id }`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${ jwt }`,
                 }
             } )
+            setData(response.data)
             setAuth( {
                 ...auth,
                 isAuth: true,
-                user: {
+                account: {
+
+                    userName: response.data.userName,
+                    firstName: response.data.firstName,
+                    lastName: response.data.lastName,
+                    address: response.data.addres,
+                    zipCode: response.data.zipCode,
+                    phoneNumber: response.data.phoneNumber,
                     email: response.data.email,
-                    id: response.data.id,
-                    username: response.data.username
+                    user: response.data.user
                 },
                 status: "done"
             } )
@@ -82,7 +90,7 @@ function AuthContextProvider( { children } ) {
         setAuth( {
             ...auth,
             isAuth: false,
-            user: null,
+            account: null,
             status: "done"
         } )
         navigate( "/" )
@@ -90,10 +98,11 @@ function AuthContextProvider( { children } ) {
 
     const contextData = {
         isAuth: auth.isAuth,
-        user: auth.user,
+        account: auth.account,
         status: auth.status,
         login: login,
-        logout: logout
+        logout: logout,
+        fetchUserData,
     }
 
     return (

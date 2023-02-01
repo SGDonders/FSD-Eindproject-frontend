@@ -14,7 +14,6 @@ function Navigation() {
     }
 
 
-
     return (
         <nav className="outer-container-navbar">
             <ul className="navbar-list">
@@ -38,6 +37,10 @@ function Navigation() {
                 <li className="navbar-list-items">
                     <NavLink className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
                              to="/RegisterPage">Register</NavLink>
+                </li>
+                    <li className="navbar-list-items">
+                    <NavLink className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
+                             to="/ProfilePage">Profilepage</NavLink>
                 </li>
                     </span>
 

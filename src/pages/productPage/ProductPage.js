@@ -13,6 +13,7 @@ import Footer from "../../components/footer/Footer";
 import piglets from "../../assets/pageContent/lamb.jpg";
 import tomato from "../../assets/ProductContent/productContent/saint-remy.jpg";
 import cherry from "../../assets/pageContent/cherry.jpg";
+import header from "../../components/header/Header";
 
 
 function ProductPage() {
@@ -21,22 +22,29 @@ function ProductPage() {
         setCounter(0)
     }
 
-    const [productName, setProductName] = useState("")
-    const [price, setPrice] = useState("")
-    const [availableStock, setAvailableStock] = useState("")
-    const [category, setCategory] = useState("")
+    // const [productName, setProductName] = useState("")
+    // const [price, setPrice] = useState("")
+    // const [availableStock, setAvailableStock] = useState("")
+    // const [category, setCategory] = useState("")
 
     const [counter, setCounter] = useState(0)
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [list, setList] = useState([]);
+    const token = localStorage.getItem('token');
     const {authAxios} = useContext(AuthContext);
 
     useEffect(() => {
         async function fetchProducts() {
 
             try {
-                const response = await axios.get(`http://localhost:8080/product`);
+                const response = await axios.get(`http://localhost:8080/product`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    }
+                });
+
                 setList(response.data);
                 console.log(response)
 
@@ -70,15 +78,7 @@ function ProductPage() {
                     classname="outer-container"
                     id="intro-section"
                     title="Fresh daily products!"
-
                 />
-
-                <section>
-
-
-
-
-                </section>
 
                 <section className="outer-container" id="outer-container">
                 <span className="inner-container" id="inner-container">
@@ -95,7 +95,6 @@ function ProductPage() {
                                         stock={product.availableStock}
                                         key={product.productName}
 
-
                                         countValue={counter}
                                         decrement={() => setCounter(counter => counter - 1)}
                                         increment={() => setCounter(counter => counter + 1)}
@@ -104,7 +103,6 @@ function ProductPage() {
                                 )
                             })
                             }
-
                         </ul>
                     }
                 </span>
