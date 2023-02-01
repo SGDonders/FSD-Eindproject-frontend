@@ -4,10 +4,10 @@
 
 /*CSS RESET*/
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+
+* {box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body,
@@ -35,7 +35,8 @@ html:focus-within {
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -58,33 +59,40 @@ select {
     font: inherit;
 }
 
-
-
 /*GLOBAL STYLES*/
 
 #root {
 
-    --font-headings: 'PT Serif', serif;;
+    --font-headings: 'PT Serif', serif;
     --font-body: 'Roboto Condensed', sans-serif;
     --font-button: 'Cabin', sans-serif;
+
+    --background-color-navbar: black;
+    --color-header-text: white;
+    --background-color-section: #f5f3f4;
+    --color-button: #ff0054 ;
+    --color-button-text: white;
+    --color-button-active: darkblue;
+    --background-color-footer: black;
+    --text-color-footer: white;
 
     --page-width: 90vw;
     --page-height: 500px;
 }
 
-
-
-/*REUSABLES*/
+/*REUSEABLES*/
 
 .outer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: var(--page-height);
     width: 100vw;
-    background-color: whitesmoke;
+    background-color: var(
+            --background-color-section);
 
+    /*border: 2px solid blue;*/
 
 }
 
@@ -93,7 +101,8 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: var(--page-height);
     width: 1600px;
+    /*border: 2px solid mediumpurple;*/
 
 }

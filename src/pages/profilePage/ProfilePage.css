@@ -1,0 +1,38 @@
+
+
+#farmer-picture {
+    display: flex;
+
+    height: 350px;
+    width: 600px;
+}
+
+#outer-container__profile {
+    height: 900px;
+}
+
+#inner-container__profile {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+#person-data {
+    margin-left: 150px;
+}
+
+.profilePage-fields {
+    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    font-family: var(--font-body);
+
+}
+
+.profile-field {
+    margin-left: 50px;
+
+}

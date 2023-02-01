@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from "../../context/AuthContext";
+import './HomePage.css';
+import { useNavigate} from "react-router-dom";
+
 
 import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
@@ -6,25 +10,30 @@ import Navigation from "../../components/navigation/Navigation";
 import Footer from "../../components/footer/Footer";
 import ProductTile from "../../components/productTiles/ProductTile";
 import HelperFunction from "../../helpers/HelperFunction";
+import SectionContainer from "../../components/sectionContainer/SectionContainer";
 
-import './HomePage.css';
-import farmersBasketImage from '../../assets/productPageContent/farmers_basket.jpg'
-import tile1 from '../../assets/styleImageTiles/tile1.jpg'
-import tile2 from '../../assets/styleImageTiles/tile3.jpg'
-import tile3 from '../../assets/styleImageTiles/tile2.jpg'
 
-import { useNavigate} from "react-router-dom";
+import farmersBasketImage from '../../assets/pageContent/farmers_basket.jpg';
+import tile1 from '../../assets/styleImageTiles/tile1.jpg';
+import tile2 from '../../assets/styleImageTiles/tile3.jpg';
+import tile3 from '../../assets/styleImageTiles/tile2.jpg';
+import piglets from "../../assets/pageContent/piglets.jpg";
+
 
 
 const Homepage = () => {
-
+    const {isAuth, } = useContext(AuthContext)
     const navigate = useNavigate()
+
+
 
     return (
         <>
-            <body>
+
 
             <Navigation/>
+
+            <main>
 
             <Header
                 title="Get your fresh fruits and vegetables straight from local farmers."
@@ -46,17 +55,17 @@ const Homepage = () => {
 
                     <div id="mid-section-buttons">
 
-                        <Button
+                        {isAuth &&<Button
                             children={"SHOP NOW"}
-                            onClick={() => HelperFunction(navigate, "/productPage")}
-                        />
+                            clickhandler={() => HelperFunction(navigate, "/productPage")}
+                        />}
                         <Button
                             children={"HOW TO ORDER"}
-                            onClick={() => HelperFunction(navigate, "/howToOrder")}
+                            clickhandler={() => HelperFunction(navigate, "/howToOrder")}
                         />
                         <Button
                             children={"FIRST TIME? CLICK HERE"}
-                            onClick={() => HelperFunction(navigate, "/registerPage")}
+                            clickhandler={() => HelperFunction(navigate, "/registerPage")}
                         />
 
                     </div>
@@ -93,33 +102,33 @@ const Homepage = () => {
                 </article>
             </section>
 
-
             <section className="outer-container" id="outer-farmers-section">
                 <span className="inner-container" id="inner-farmers-section">
-
                     <div className="mid-section-farmers">
-                    <h1 className="farmers-title">Local farmers</h1>
-                    <p className="farmers-text"> Farmers carefully source products from passionate producers who share our commitment to responsible and sustainable practises.</p>
-                        </div>
+                        <h1 className="farmers-title">Local farmers</h1>
+                        <p className="farmers-text"> Farmers carefully source products from passionate producers who share our commitment to responsible and sustainable practises.</p>
+                    </div>
                     <div id="farmers-button">
 
                     <Button
                         children={"MEET OUR PRODUCERS"}
-                        onClick={() => HelperFunction(navigate, "/farmerPage")}
+                        clickhandler={() => HelperFunction(navigate, "/farmerPage")}
                     />
 
                         </div>
-
                 </span>
             </section>
 
+            <SectionContainer
+                backgroundImage={piglets}
+                classname="outer-container"
+                id="bottom-section"
+            />
 
-
-
+            </main>
 
             <Footer/>
 
-            </body>
         </>
     );
 };

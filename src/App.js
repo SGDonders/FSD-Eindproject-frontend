@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useContext} from 'react';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import HowToOrder from "./pages/howToOrder/HowToOrder";
@@ -8,11 +8,15 @@ import ProductPage from "./pages/productPage/ProductPage";
 import RegisterPage from "./pages/registerPage/RegisterPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import FarmersPage from "./pages/farmersPage/FarmersPage";
+import {AuthContext} from "./context/AuthContext";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 
 
 
 
 function App() {
+    const { isAuth } =useContext(AuthContext)
+
     return (
         <>
 
@@ -23,6 +27,7 @@ function App() {
                 <Route path="/registerPage" element={<RegisterPage/>}/>
                 <Route path="/loginPage" element={<LoginPage/>}/>
                 <Route path="/farmerPage" element={<FarmersPage/>}/>
+                <Route path="/profilePage" element={<ProfilePage/>}/>
             </Routes>
 
 

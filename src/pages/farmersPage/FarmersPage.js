@@ -13,18 +13,20 @@ import tomato from "../../assets/tomato.jpg";
 
 function FarmersPage() {
     return (
-        <body>
+        <>
 
-        <Navigation/>
+            <Navigation/>
 
-        <Header
-            title="Meet our farmers"
-            backgroundImage={tractor}
-            classname="outer-container"
-            id="top-section"
-        />
+            <main>
 
-        <section className="outer-container" id="outer-container">
+                <Header
+                    title="Meet our farmers"
+                    backgroundImage={tractor}
+                    classname="outer-container"
+                    id="top-section"
+                />
+
+                <section className="outer-container" id="outer-container">
                 <span className="inner-container" id="inner-container">
 
                     <ProductTile
@@ -66,17 +68,19 @@ function FarmersPage() {
                     />
 
                 </span>
-        </section>
+                </section>
 
-        <SectionContainer
-            backgroundImage={cows}
-            classname="outer-container"
-            id="bottom-section"
-        />
+                <SectionContainer
+                    backgroundImage={cows}
+                    classname="outer-container"
+                    id="bottom-section"
+                />
+            </main>
 
-        <Footer/>
-            
-        </body>
+            <Footer/>
+        </>
+
+
     );
 };
 
