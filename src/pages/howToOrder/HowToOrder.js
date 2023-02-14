@@ -37,9 +37,9 @@ function HowToOrder() {
                     <div className="inner-container" id="howToOrder-inner-section">
                         <h5 className='howToOrder-section-title'>1. Register your details</h5>
                         <p>Enter you registration details on the register form</p>
-                        <h5 className="howToOrder-section-title">3. sign in</h5>
+                        <h5 className="howToOrder-section-title">2. Sign in</h5>
                         <p>Sign-in your account and select a timeframe to collect your order.</p>
-                        <h5 className="howToOrder-section-title">2. Add to chart</h5>
+                        <h5 className="howToOrder-section-title">3. Add to chart</h5>
                         <p>Select your products you want to order.</p>
                         <p> Add the products to your cart</p>
 
