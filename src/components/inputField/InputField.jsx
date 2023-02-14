@@ -1,6 +1,6 @@
 import React from 'react';
-import './InputField.css';
 
+import './InputField.css';
 
 const InputField = ({className, clickHandler,
                     type, name, children, value, placeholder, id}) => {
@@ -14,7 +14,6 @@ const InputField = ({className, clickHandler,
                    className={className}
                    placeholder={placeholder}
                    id={id}
-
             />
         </label>
     );

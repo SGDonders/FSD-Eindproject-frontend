@@ -1,20 +1,7 @@
-
 nav {
     position: sticky;
     top: 0;
     font-family: var(--font-headings);
-}
-
-.active-menu-link {
-    text-decoration-line: none;
-    color: darkorange;
-}
-
-
-.default-menu-link {
-    border-bottom: none;
-    color: whitesmoke;
-    text-decoration-line: none;
 }
 
 .outer-container-navbar {
@@ -26,7 +13,7 @@ nav {
     color: orange;
 }
 
-.navbar-list {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-self: center;
@@ -41,10 +28,41 @@ nav {
     font-size: 20px;
 }
 
-#nav-list-links {
+#nav-links {
     display: flex;
     align-items: center;
 }
+
+
+#login-button {
+    display: flex;
+
+}
+
+.cart{
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.active-menu-link {
+    text-decoration-line: none;
+    color: var(--color-button);
+}
+
+
+.default-menu-link {
+    border-bottom: none;
+    color: whitesmoke;
+    text-decoration-line: none;
+}
+
+
+
+
+
+
+
 
 
 

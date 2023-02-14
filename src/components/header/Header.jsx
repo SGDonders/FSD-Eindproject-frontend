@@ -1,7 +1,8 @@
 import React from 'react';
+
 import './Header.css';
 
-const Header = ({ title, backgroundImage, classname }) => {
+const Header = ({ id, title, backgroundImage, classname }) => {
     return (
         <header
             className={classname}
@@ -11,11 +12,12 @@ const Header = ({ title, backgroundImage, classname }) => {
                 backgroundPosition: 'center',
                 color: "white",
                 fontSize: 28
+
             }}
+            id={id}
         >
             <h1 className="inner-container">{title}</h1>
         </header>
     );
 };
-
 export default Header;

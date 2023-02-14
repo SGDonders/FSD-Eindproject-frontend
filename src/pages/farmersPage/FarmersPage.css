@@ -1,0 +1,10 @@
+
+#outer-container-farmer {
+    display: flex;
+    min-height: 1000px;
+}
+
+#inner-container-farmer {
+    display: flex;
+    min-height: 1000px;
+}

@@ -77,7 +77,9 @@ select {
     --text-color-footer: white;
 
     --page-width: 90vw;
-    --page-height: 500px;
+    --page-height: 400px;
+
+
 }
 
 /*REUSEABLES*/
@@ -89,6 +91,7 @@ select {
     justify-content: center;
     height: var(--page-height);
     width: 100vw;
+
     background-color: var(
             --background-color-section);
 
@@ -102,7 +105,7 @@ select {
     align-items: center;
     justify-content: center;
     height: var(--page-height);
-    width: 1600px;
+    flex-basis: 1600px;
     /*border: 2px solid mediumpurple;*/
 
 }

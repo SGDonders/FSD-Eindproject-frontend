@@ -1,5 +1,7 @@
 import React from 'react';
+
 import './ProductTile.css';
+
 import Button from "../button/Button";
 
 const ProductTile = ({ idProductName, idPrice, productName, backgroundImage, price, button, className }) => (

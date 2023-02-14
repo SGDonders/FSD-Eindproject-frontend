@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+
 import axios from "axios";
 
 export const AuthContext = createContext( {} );
@@ -22,10 +23,10 @@ function AuthContextProvider( { children } ) {
             const decodedToken = jwt_decode( storedToken )
 
             if ( Math.floor( Date.now() / 1000 ) < decodedToken.exp ) {
-                console.log( "De gebruiker is NOG STEEDS ingelogd 🔓" )
+                console.log( "User still logged in 🔓" )
                 void fetchUserData( storedToken, decodedToken.sub )
             } else  {
-                console.log( "De token is verlopen" )
+                console.log( "This toke is expired" )
                 localStorage.removeItem( 'token' )
             }
         } else {
@@ -39,7 +40,7 @@ function AuthContextProvider( { children } ) {
     }, [] )
 
     function login( jwt ) {
-        console.log( "De gebruiker is ingelogd 🔓" )
+        console.log( "User logged in.. 🔓" )
         localStorage.setItem( 'token', jwt )
         const decodedToken = jwt_decode( jwt );
 
@@ -63,7 +64,7 @@ function AuthContextProvider( { children } ) {
                     userName: response.data.userName,
                     firstName: response.data.firstName,
                     lastName: response.data.lastName,
-                    address: response.data.addres,
+                    address: response.data.address,
                     zipCode: response.data.zipCode,
                     phoneNumber: response.data.phoneNumber,
                     email: response.data.email,
@@ -85,7 +86,7 @@ function AuthContextProvider( { children } ) {
     }
 
     function logout() {
-        console.log( "De gebruiker is uitgelogd 🔒" )
+        console.log( "User logged out.. 🔒" )
         localStorage.removeItem( 'token' )
         setAuth( {
             ...auth,

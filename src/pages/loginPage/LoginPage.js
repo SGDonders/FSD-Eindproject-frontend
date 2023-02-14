@@ -1,19 +1,16 @@
 import React, {useContext, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 
 import './LoginPage.css';
 
-import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
 import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import Footer from "../../components/footer/Footer";
 
-import appletree from "../../assets/appletree.jpg";
+import appletree from "../../assets/pageContent/appletree.jpg";
 import chicken from "../../assets/pageContent/chicken.jpg";
 
 
@@ -28,7 +25,6 @@ function SignIn() {
         e.preventDefault();
         toggleError(false);
 
-        console.log(username, password)
 
         try {
             const result = await axios.post('http://localhost:8080/authenticate', {
@@ -36,7 +32,9 @@ function SignIn() {
                 password: password
 
             });
-            console.log(result.data);
+
+            // om te controleren welke data er wordt opgeslagen.
+            // console.log(result.data);
 
             login(result.data.jwt);
             navigate("/");
@@ -52,7 +50,6 @@ function SignIn() {
 
         <>
 
-            <Navigation/>
 
             <main>
 
@@ -88,9 +85,9 @@ function SignIn() {
                         >Password:
                         </InputField>
 
-                        <Button id="login-btn"
+                        <Button className="login-btn"
                                 type="submit"
-                                clickhandler={handleSubmit}
+                                // clickhandler={handleSubmit}
                                 children={"LOG IN"}/>
 
                     </section>
@@ -104,7 +101,6 @@ function SignIn() {
                 />
             </main>
 
-            <Footer/>
         </>
     );
 };

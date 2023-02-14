@@ -4,20 +4,22 @@
     font-size: 30px;
     font-weight: 900;
     font-family: var(--font-headings);
+    margin-top: 50px;
 
 }
 
 #howToOrder-outer-section {
-    height: 1250px;
+    height: 1200px;
 }
 
 #howToOrder-inner-section {
     font-size: 25px;
     height: 950px;
     font-family: var(--font-body);
+
 }
 
 #howToOrder__button {
-    margin-bottom: 25px;
+    margin-bottom: 120px;
 }
 

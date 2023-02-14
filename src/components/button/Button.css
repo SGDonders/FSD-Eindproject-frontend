@@ -1,4 +1,3 @@
-
 button {
     display: flex;
     align-items: center;
@@ -11,6 +10,7 @@ button {
     background-color: var(--color-button);
     font-family: var(--font-button);
     color: var(--color-button-text);
+
 }
 
 button:active {

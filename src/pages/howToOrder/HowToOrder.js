@@ -1,19 +1,28 @@
-import React from 'react';
-import Navigation from "../../components/navigation/Navigation";
-import Header from "../../components/header/Header";
-import peach from "../../assets/pageContent/peach.jpg";
-import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import Footer from "../../components/footer/Footer";
-import chicken from "../../assets/pageContent/chicken.jpg";
+import React, {useContext} from 'react';
+import {AuthContext} from "../../context/AuthContext";
+import {useNavigate} from "react-router-dom";
+import HelperFunction from "../../helpers/HelperFunction";
+
 import './HowToOrder.css';
+
+import Header from "../../components/header/Header";
+import SectionContainer from "../../components/sectionContainer/SectionContainer";
 import Button from "../../components/button/Button";
+
+import peach from "../../assets/pageContent/peach.jpg";
+import chicken from "../../assets/pageContent/chicken.jpg";
+
 
 
 function HowToOrder() {
+    const navigate = useNavigate()
+    const {isAuth,} = useContext(AuthContext)
+
+
+
     return (
         <>
 
-            <Navigation/>
 
             <main>
 
@@ -28,19 +37,25 @@ function HowToOrder() {
                     <div className="inner-container" id="howToOrder-inner-section">
                         <h5 className='howToOrder-section-title'>1. Register your details</h5>
                         <p>Enter you registration details on the register form</p>
-                        <h5 className="howToOrder-section-title">2. Add to chart</h5>
-                        <p>Select your farmer you want to buy products from.</p>
-                        <p> Add the products to your cart</p>
                         <h5 className="howToOrder-section-title">3. sign in</h5>
-                        <p>Sign into your account and select a timeframe to collect your order.</p>
-                        <p>Review and accept the Term&Conditions, proceed to checkout.</p>
+                        <p>Sign-in your account and select a timeframe to collect your order.</p>
+                        <h5 className="howToOrder-section-title">2. Add to chart</h5>
+                        <p>Select your products you want to order.</p>
+                        <p> Add the products to your cart</p>
+
                         <h5 className="howToOrder-section-title">4.Collect</h5>
                         <p>Your farmer will pack your order and and send conformation of the order details.</p>
                     </div>
 
-                    <Button id="howToOrder__button"
-                            children={"SHOP NOW!"}
-                    />
+                    {isAuth && <Button id="howToOrder__button"
+                             children={"SHOP NOW!"}
+                             clickhandler={() => HelperFunction(navigate, "/productPage")}
+                    />}
+
+                    {!isAuth && <Button id="howToOrder__button"
+                                       children={"REGISTER"}
+                                       clickhandler={() => HelperFunction(navigate, "/registerPage")}
+                    />}
 
                     <h6>Any questions, contact us!</h6>
 
@@ -54,7 +69,6 @@ function HowToOrder() {
 
             </main>
 
-            <Footer/>
 
         </>
     );

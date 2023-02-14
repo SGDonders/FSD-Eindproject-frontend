@@ -1,9 +1,6 @@
 
 header {
     display: flex;
-    flex-shrink: 1;
-    flex-wrap: wrap;
     font-family: var(--font-headings);
     color: var(--color-header-text);
-    -webkit-text-stroke: 1px var(--color-header-text);
 }

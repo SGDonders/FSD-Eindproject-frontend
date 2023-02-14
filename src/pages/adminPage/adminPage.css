@@ -1,0 +1,62 @@
+
+#outer-container__post {
+    height: 400px;
+}
+
+#outer-container__delete {
+    height: 400px;
+
+}
+
+#outer-container__patch {
+    height: 400px;
+}
+
+#outer-container__img {
+    height: 700px;
+
+
+}
+#inner-container__img {
+    display: flex;
+    height: 700px;
+}
+
+
+
+.admin-field {
+    margin-bottom: 15px;
+    width: 200px;
+}
+
+#post__button {
+    margin-top: 50px;
+}
+
+.image-span {
+    border: 1px solid black;
+    height: 350px;
+    width: 600px;
+}
+
+.preview-box {
+    height: 400px;
+    width: 600px;
+
+}
+
+.image-preview {
+    height: 450px;
+    width: 600px;
+}
+
+.img-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.upload-img-button {
+    margin-top: 60px;
+}
