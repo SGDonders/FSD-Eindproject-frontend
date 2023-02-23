@@ -67,6 +67,11 @@ function Navigation() {
 
                      <li>
                          <div id="login-button">
+
+                             { isAuth && <Link to="/cart" className="cart">
+                                 <ShoppingCart size={40} color="white"/>
+                             </Link>}
+
                             {!isAuth && <Button children="LOG IN"
                                                 clickhandler={clickHandler}/>}
                             { isAuth && <Button
@@ -74,9 +79,7 @@ function Navigation() {
                                                 type="button"
                                                 clickhandler={logout}/>}
 
-                            { isAuth && <Link to="/cart" className="cart">
-                                            <ShoppingCart size={40} color="white"/>
-                                        </Link>}
+
                         </div>
                     </li>
             </ul>

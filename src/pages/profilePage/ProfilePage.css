@@ -7,14 +7,14 @@
 }
 
 #outer-container__profile {
-    height: 900px;
+    height: 850px;
 }
 
 #inner-container__profile {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 900px;
+    height: 850px;
     width: 1600px;
 }
 
@@ -32,6 +32,8 @@
 
 .newProfile {
     padding: 4px;
+    margin-bottom: 13px;
+    margin-top: 12px;
     width: 250px;
 }
 
@@ -45,11 +47,11 @@
 }
 
 #outer-container__button {
-    height: 100px;
+    height: 150px;
 }
 
 #inner-container__button {
-    height: 100px;
+    height: 150px;
 
 }
 

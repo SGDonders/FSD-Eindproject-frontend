@@ -8,7 +8,7 @@ export const CartItem = (props) => {
     const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
         useContext(ShopContext);
 
-    console.log(cartItems)
+    // console.log(cartItems)
 
 
     return (

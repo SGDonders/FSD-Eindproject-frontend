@@ -123,7 +123,7 @@ function ProfilePage() {
                                     type="text"
                                     name="New firstname"
                                     placeholder="new firstname"
-                                > Firstname:
+                                >
                                 </InputField>
 
                                 <InputField
@@ -134,7 +134,7 @@ function ProfilePage() {
                                     type="text"
                                     name="New LastName"
                                     placeholder="New Lastname"
-                                > Lastname:
+                                >
                                 </InputField>
 
                                 <InputField
@@ -145,7 +145,7 @@ function ProfilePage() {
                                     type="text"
                                     name="New zipcode"
                                     placeholder="New zipcode"
-                                > Zipcode:
+                                >
                                 </InputField>
 
                                 <InputField
@@ -156,7 +156,7 @@ function ProfilePage() {
                                     type="text"
                                     name="New address"
                                     placeholder="New address"
-                                > Address:
+                                >
                                 </InputField>
 
                                 <InputField
@@ -167,7 +167,7 @@ function ProfilePage() {
                                     type="text"
                                     name="New phonenumber"
                                     placeholder="New phonenumber"
-                                > Phonenumber:
+                                >
                                 </InputField>
 
                                 <InputField
@@ -178,7 +178,7 @@ function ProfilePage() {
                                     type="text"
                                     name="New email"
                                     placeholder="New email"
-                                > Email:
+                                >
                                 </InputField>
 
                             </form>

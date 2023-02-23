@@ -7,7 +7,6 @@ export const Product = ({data}) => {
     const { id, productName, price, productImage, category } = data;
     const { addToCart, cartItems } = useContext(ShopContext);
     // console.log(id)
-    console.log(cartItems)
 
 
     const cartItemCount = cartItems[id];

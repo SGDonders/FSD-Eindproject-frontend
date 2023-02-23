@@ -38,7 +38,7 @@ function HowToOrder() {
                         <h5 className='howToOrder-section-title'>1. Register your details</h5>
                         <p>Enter you registration details on the register form</p>
                         <h5 className="howToOrder-section-title">2. Sign in</h5>
-                        <p>Sign-in your account and select a timeframe to collect your order.</p>
+                        <p>Sign-in your account, visit our shop and order some fresh products.</p>
                         <h5 className="howToOrder-section-title">3. Add to chart</h5>
                         <p>Select your products you want to order.</p>
                         <p> Add the products to your cart</p>

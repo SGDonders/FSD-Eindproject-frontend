@@ -10,10 +10,10 @@ import {PRODUCTS} from "../../products";
 
 
 export const Cart = () => {
-    const {products, cartItems, getTotalCartAmount, checkout} = useContext(ShopContext);
+    const {cartItems, getTotalCartAmount, checkout} = useContext(ShopContext);
     const totalAmount = getTotalCartAmount();
-    console.log(products)
-    console.log(cartItems)
+    // console.log(products)
+    // console.log(cartItems)
 
     const navigate = useNavigate();
 

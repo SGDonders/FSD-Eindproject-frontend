@@ -4,14 +4,12 @@
 
 
     display: flex;
-    flex-wrap: wrap;
     height: max-content;
     min-height: 1000px;
 }
 
 #inner-container-products {
     display: flex;
-    flex-wrap: wrap ;
     height: max-content;
     min-height: 1000px;
 
@@ -23,13 +21,13 @@
 
 }
 
-.productPage-counter {
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    height: max-content;
+/*.productPage-counter {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    overflow: auto;*/
+/*    height: max-content;*/
 
-}
+/*}*/
 
 
 #outro-section {
