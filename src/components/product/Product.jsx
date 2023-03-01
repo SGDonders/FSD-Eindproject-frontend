@@ -6,7 +6,7 @@ import Button from "../button/Button";
 export const Product = ({data}) => {
     const { id, productName, price, productImage, category } = data;
     const { addToCart, cartItems } = useContext(ShopContext);
-    // console.log(id)
+    console.log(id)
 
 
     const cartItemCount = cartItems[id];

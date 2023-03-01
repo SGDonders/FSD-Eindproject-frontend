@@ -85,10 +85,13 @@ function SignIn() {
                         >Password:
                         </InputField>
 
+                        {toggleError && <p className="warning-msg">You are not logged in!</p>}
+
+
                         <Button className="login-btn"
                                 type="submit"
-                                // clickhandler={handleSubmit}
                                 children={"LOG IN"}/>
+
 
                     </section>
                 </form>

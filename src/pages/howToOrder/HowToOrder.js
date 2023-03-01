@@ -42,22 +42,19 @@ function HowToOrder() {
                         <h5 className="howToOrder-section-title">3. Add to chart</h5>
                         <p>Select your products you want to order.</p>
                         <p> Add the products to your cart</p>
-
                         <h5 className="howToOrder-section-title">4.Collect</h5>
                         <p>Your farmer will pack your order and and send conformation of the order details.</p>
                     </div>
 
-                    {isAuth && <Button id="howToOrder__button"
+                    {isAuth && <Button className="howToOrder__button"
                              children={"SHOP NOW!"}
                              clickhandler={() => HelperFunction(navigate, "/productPage")}
                     />}
 
-                    {!isAuth && <Button id="howToOrder__button"
+                    {!isAuth && <Button className="howToOrder__button"
                                        children={"REGISTER"}
                                        clickhandler={() => HelperFunction(navigate, "/registerPage")}
                     />}
-
-                    <h6>Any questions, contact us!</h6>
 
                 </section>
 

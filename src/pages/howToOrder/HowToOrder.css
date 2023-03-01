@@ -15,12 +15,14 @@
 
 #howToOrder-inner-section {
     font-size: 25px;
-    height: 950px;
+    height: 850px;
     font-family: var(--font-body);
 
 }
 
-#howToOrder__button {
-    margin-bottom: 120px;
+.howToOrder__button {
+    margin-bottom: 300px;
+    height: 100px;
+
 }
 

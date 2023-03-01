@@ -4,7 +4,7 @@ import './ProductTile.css';
 
 import Button from "../button/Button";
 
-const ProductTile = ({ idProductName, idPrice, productName, backgroundImage, price, button, className }) => (
+const ProductTile = ({ idProductName, idPrice, productName, backgroundImage, price, button, className, clickHandler }) => (
     <div
         className={className}
         style={{ backgroundImage: `url(${backgroundImage})`,
@@ -14,6 +14,7 @@ const ProductTile = ({ idProductName, idPrice, productName, backgroundImage, pri
         <p id={idPrice}>{price}</p>
         <Button
         children={button}
+        clickhandler={clickHandler}
         />
     </div>
 );

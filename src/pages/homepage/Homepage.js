@@ -80,6 +80,8 @@ const Homepage = () => {
                             productName="SALE"
                             price="up to 10% discount"
                             button="Shop now"
+                            clickHandler={() => HelperFunction(navigate, "/PageNotFound")}
+
                         />
 
                         <ProductTile
@@ -88,6 +90,8 @@ const Homepage = () => {
                             productName="SALE"
                             price="up to 25% discount"
                             button="Shop now"
+                            clickHandler={() => HelperFunction(navigate, "/PageNotFound")}
+
                         />
 
                         <ProductTile
@@ -96,6 +100,8 @@ const Homepage = () => {
                             productName="SALE"
                             price="up to 50% discount"
                             button="Shop now"
+                            clickHandler={() => HelperFunction(navigate, "/PageNotFound")}
+
                         />
 
                     </article>

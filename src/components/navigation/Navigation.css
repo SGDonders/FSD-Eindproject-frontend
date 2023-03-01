@@ -47,7 +47,8 @@ nav {
 }
 .active-menu-link {
     text-decoration-line: none;
-    color: var(--color-button);
+    color: #a22aff;
+    font-weight: bolder ;
 }
 
 

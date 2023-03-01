@@ -47,7 +47,7 @@ export const Cart = () => {
                                 </Button>
                                 <Button
                                     className="checkout-button"
-                                    clickhandler={() => {checkout();navigate("/checkout");
+                                    clickhandler={() => {checkout();navigate("/PageNotFound");
                                     }}
                                 >
                                     {" "}

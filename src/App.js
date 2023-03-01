@@ -11,10 +11,11 @@ import RegisterPage from "./pages/registerPage/RegisterPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import FarmersPage from "./pages/farmersPage/FarmersPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
-import AdminPage from "./pages/adminPage/adminPage";
+import AdminPage from "./pages/adminPage/AdminPage";
 import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
 import {Cart} from "./pages/cart/Cart";
+import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
 
 
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/profilePage" element={<ProfilePage/>}/>
                     <Route path="/adminPage" element={<AdminPage/>}/>
                     <Route path="/cart" element={<Cart/>}/>
+                    <Route path="*" element={<PageNotFound/>}/>
                 </Routes>
             <Footer/>
 

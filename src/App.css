@@ -109,3 +109,10 @@ select {
     /*border: 2px solid mediumpurple;*/
 
 }
+
+
+.warning-msg {
+    margin-top: 10px;
+    font-weight: bold;
+    color: red;
+}
