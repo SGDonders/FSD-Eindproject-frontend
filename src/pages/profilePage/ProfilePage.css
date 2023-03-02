@@ -2,37 +2,56 @@
 
 #farmer-picture {
     display: flex;
-
     height: 350px;
     width: 600px;
 }
 
 #outer-container__profile {
-    height: 900px;
+    height: 850px;
 }
 
 #inner-container__profile {
-
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
+    justify-content: space-evenly;
+    height: 850px;
+    width: 1600px;
 }
 
-#person-data {
-    margin-left: 150px;
+.register-title {
+    margin-bottom: 15px;
+    font-family: var(--font-headings) ;
 }
 
 .profilePage-fields {
-    margin-left: 150px;
     display: flex;
     flex-direction: column;
-    font-size: 25px;
+    font-size: 20px;
     font-family: var(--font-body);
+}
+
+.newProfile {
+    padding: 4px;
+    margin-bottom: 13px;
+    margin-top: 12px;
+    width: 250px;
+}
+
+.profilePage-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-button {
+    margin-bottom: 60px;
+}
+
+#outer-container__button {
+    height: 150px;
+}
+
+#inner-container__button {
+    height: 150px;
 
 }
 
-.profile-field {
-    margin-left: 50px;
-
-}

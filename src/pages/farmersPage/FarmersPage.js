@@ -1,87 +1,91 @@
-import React from 'react';
-import Navigation from "../../components/navigation/Navigation";
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
+
+import './FarmersPage.css'
+
 import Header from "../../components/header/Header";
-import tractor from "../../assets/tractor.jpg";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import cows from "../../assets/cows.jpg";
-import Footer from "../../components/footer/Footer";
-import ProductTile from "../../components/productTiles/ProductTile";
-import beans from "../../assets/beans.jpg";
-import milk from "../../assets/milk.jpg";
-import peren from "../../assets/peren.jpg";
-import tomato from "../../assets/tomato.jpg";
+
+import brownCow from "../../assets/pageContent/brownCow.jpg";
+import tractor from "../../assets/pageContent/tractor.jpg";
 
 function FarmersPage() {
+
+    const [picture, setPicture] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        async function fetchImage() {
+            try {
+                const response = await axios.get('http://localhost:8080/download/UploadFarmerPicture.jpg', {
+                    responseType: 'blob'
+                });
+                const blob = response.data;
+
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    const image = new Image();
+                    image.src = event.target.result;
+                    setPicture(image);
+                }
+
+                reader.readAsDataURL(blob);
+
+            } catch (e) {
+                setError(e);
+            }
+        }
+
+        void fetchImage();
+    }, []);
+
+
     return (
         <>
-
-            <Navigation/>
-
             <main>
 
                 <Header
-                    title="Meet our farmers"
+                    title="Meet your Farmer"
                     backgroundImage={tractor}
                     classname="outer-container"
                     id="top-section"
                 />
 
-                <section className="outer-container" id="outer-container">
-                <span className="inner-container" id="inner-container">
+                <section className="outer-container" id="outer-container-farmer">
+                    <span className="inner-container" id="inner-container-farmer">
 
-                    <ProductTile
-                        className="
+                        <h1 className="farmers-title">Welcome I am your local producer of fresh products.</h1>
+                        <h3 className="farmers-title">My name is Herman de Jager.</h3>
 
-                        product-page-tiles"
-                        backgroundImage={beans}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
-                    />
+                        {error && <div className="error-msg">Something went wrong: {error.message}</div>}
+                        {picture && <img className="image-box" src={picture.src} alt="profile-picture"/>}
 
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={milk}
-                        productName="test"
-                        price="test"
-                        //onclick={milk}
-                        button="click here"
-                    />
+                        <p className="farmers-text">
+                            Welcome to our farm in the beautiful province of Friesland! We're located in the city of Boornzwaag, and we're proud to say that we're committed to both traditional and biological farming practices.
+                        </p>
+                        <p className="farmers-text">
+                            Here on our farm, we believe that it's important to know where your food comes from, and we're passionate about educating others on the importance of sustainable and ethical farming practices. We offer tours and workshops for anyone interested in learning more about what we do, and we always welcome questions and conversations about the work we do here.
+                        </p>
+                        <p className="farmers-text">
+                            In addition to our educational offerings, we also offer a range of fresh, locally produced products. From delicious, ripe fruits and vegetables, to fresh eggs and dairy products, to sustainably raised meats, we have something for everyone. We believe that supporting local farmers is an important part of building strong, sustainable communities, and we're proud to be a part of that effort.
+                        </p>
+                        <p className="farmers-text">
+                            So if you're interested in learning more about what we do, or if you're simply looking for fresh, delicious, locally sourced products, we invite you to come and visit us here at our farm. We can't wait to share our love of traditional and biological farming with you!
+                        </p>
 
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={peren}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
-                    />
-
-                    <ProductTile
-                        className="product-page-tiles"
-                        backgroundImage={tomato}
-                        productName="test"
-                        price="test"
-                        //onclick={}
-                        button="click here"
-                    />
-
-                </span>
+                    </span>
                 </section>
 
                 <SectionContainer
-                    backgroundImage={cows}
+                    backgroundImage={brownCow}
                     classname="outer-container"
                     id="bottom-section"
                 />
             </main>
 
-            <Footer/>
         </>
-
-
     );
-};
+}
 
 export default FarmersPage;

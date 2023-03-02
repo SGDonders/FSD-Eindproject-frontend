@@ -2,14 +2,13 @@ import React, {useContext, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
+
 import './RegisterPage.css';
 
-import Navigation from "../../components/navigation/Navigation";
 import Header from "../../components/header/Header";
 import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import Footer from "../../components/footer/Footer";
 
 import brownCow from "../../assets/pageContent/brownCow.jpg";
 import beans from "../../assets/pageContent/beans.jpg";
@@ -27,15 +26,11 @@ function SignUp() {
     const [email, setEmail] = useState("");
 
     const url = "http://localhost:8080"
-    const [showPopup, setShowPopup] = useState(false);
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const navigate = useNavigate();
     const {isAuth,} = useContext(AuthContext)
 
-    function finishRegister() {
-        navigate("/loginPage");
-    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -58,6 +53,7 @@ function SignUp() {
                 phoneNumber: phoneNumber,
                 email: email
             });
+            navigate("/loginPage");
 
         } catch (e) {
             console.error(e);
@@ -72,7 +68,6 @@ function SignUp() {
     return (
         <>
 
-            <Navigation/>
 
             <main>
 
@@ -197,8 +192,6 @@ function SignUp() {
                     id="bottom-section"
                 />
             </main>
-
-            <Footer/>
 
         </>
     );

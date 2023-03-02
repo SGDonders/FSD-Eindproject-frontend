@@ -5,7 +5,8 @@
 }
 
 #inner-container__register {
-    height: 900px
+    height: 900px;
+    display: flex;
 }
 
 #regeister-button__innercontainer {
@@ -21,9 +22,6 @@
 .register-form__innercontainer {
 
 }
-
-
-
 
 #register-button__outercontainer {
     height: 100px;
@@ -41,8 +39,6 @@
     height: 50px;
     font-family: var(--font-body);
     font-size: 15px;
-
-
 }
 
 
@@ -65,3 +61,24 @@
     border-radius: 10px;
     text-align: center;
 }
+
+
+
+
+/*voor invoer velden register en profile */
+
+/*input::placeholder {*/
+/*    padding-left: 10px;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    transition: all 0.2s ease-in-out;*/
+/*}*/
+
+/*input:focus::placeholder {*/
+/*    padding: 0;*/
+/*    top: -6px;*/
+/*    left: 7px;*/
+/*    font-size: 15px;*/
+/*    color: #999;*/
+/*}*/

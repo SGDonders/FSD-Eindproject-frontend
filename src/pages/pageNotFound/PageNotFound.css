@@ -1,0 +1,24 @@
+.pageNotFound {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PNF-title {
+    font-size: 25px;
+}
+
+#outer-container-pageNotFound {
+    height: 1200px;
+
+
+
+}
+
+#inner-container-pageNotFound {
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}

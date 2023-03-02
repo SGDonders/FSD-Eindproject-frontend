@@ -70,14 +70,17 @@ select {
     --background-color-navbar: black;
     --color-header-text: white;
     --background-color-section: #f5f3f4;
-    --color-button: #ff0054 ;
+    --color-nav-button: linear-gradient(90deg, rgba(227,23,211,1) 0%, rgba(0,0,0,1) 0%, rgba(78,76,78,1) 18%, rgba(133,131,134,1) 50%, rgba(69,68,69,1) 84%, rgba(0,0,0,1) 100%);
+    --color-button: #e317d3 ;
     --color-button-text: white;
     --color-button-active: darkblue;
     --background-color-footer: black;
     --text-color-footer: white;
 
     --page-width: 90vw;
-    --page-height: 500px;
+    --page-height: 400px;
+
+
 }
 
 /*REUSEABLES*/
@@ -89,6 +92,7 @@ select {
     justify-content: center;
     height: var(--page-height);
     width: 100vw;
+
     background-color: var(
             --background-color-section);
 
@@ -102,7 +106,14 @@ select {
     align-items: center;
     justify-content: center;
     height: var(--page-height);
-    width: 1600px;
+    flex-basis: 1600px;
     /*border: 2px solid mediumpurple;*/
 
+}
+
+
+.warning-msg {
+    margin-top: 10px;
+    font-weight: bold;
+    color: red;
 }
