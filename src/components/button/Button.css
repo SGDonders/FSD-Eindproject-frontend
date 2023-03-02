@@ -5,9 +5,10 @@ button {
     height: 50px;
     width: 200px;
     font-weight: 900;
-    border-radius: 4px;
+    border-radius: 8px;
     /*border-color: var(--color-button);*/
     /*background-color: var(--color-button);*/
+
     background: linear-gradient(145deg,
                 rgba(5,0,6,1) 0%,
                 rgba(83,0,99,1) 13%,
@@ -25,33 +26,4 @@ button:active {
     background: var(--color-button-active);
     border-color: var(--color-button-active);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

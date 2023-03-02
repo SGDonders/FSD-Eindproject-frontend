@@ -70,6 +70,7 @@ select {
     --background-color-navbar: black;
     --color-header-text: white;
     --background-color-section: #f5f3f4;
+    --color-nav-button: linear-gradient(90deg, rgba(227,23,211,1) 0%, rgba(0,0,0,1) 0%, rgba(78,76,78,1) 18%, rgba(133,131,134,1) 50%, rgba(69,68,69,1) 84%, rgba(0,0,0,1) 100%);
     --color-button: #e317d3 ;
     --color-button-text: white;
     --color-button-active: darkblue;

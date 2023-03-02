@@ -73,11 +73,14 @@ function Navigation() {
                              </Link>}
 
                             {!isAuth && <Button children="LOG IN"
-                                                clickhandler={clickHandler}/>}
+                                                type="button"
+                                                clickhandler={clickHandler}
+                                                className="nav-button"/>}
                             { isAuth && <Button
                                                 children="LOG OUT"
                                                 type="button"
-                                                clickhandler={logout}/>}
+                                                clickhandler={logout}
+                                                className="nav-button"/>}
 
 
                         </div>

@@ -37,6 +37,7 @@ nav {
 #login-button {
     display: flex;
 
+
 }
 
 .cart{
@@ -56,6 +57,10 @@ nav {
     border-bottom: none;
     color: whitesmoke;
     text-decoration-line: none;
+}
+
+.nav-button {
+    background: var(--color-nav-button)
 }
 
 

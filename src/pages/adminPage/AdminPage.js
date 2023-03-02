@@ -162,8 +162,9 @@ function AdminPage() {
     }
 
     async function uploadProductPicture(e) {
+        console.log("functie uitgevoerd")
         const formData = new FormData();
-        formData.append("file", file)
+        formData.append("file", productImage)
         try {
             await axios.post(`http://localhost:8080/single/uploadDb/${productName}`, formData,
                 {
