@@ -3,27 +3,35 @@
 .description {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 200px;
-    margin-left: 25px;
+    align-items: center;
     margin-top: 25px;
-;
     font-family: var(--font-headings);
 
 }
 
 .product {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 100px;
     margin-bottom: 25px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
     height: 200px;
     width: 450px;
     border: 1px solid darkgrey;
-
-
 }
 
 .add-button {
     width: 120px;
     margin-left: 20px;
+}
+
+.productImage {
+    margin-top: 25px;
+    margin-right: 50px;
+    height: 150px;
+    width: 150px;
+
+
+    border: 1px solid black;
 }

@@ -1,8 +1,6 @@
 
 
 #outer-container-products {
-
-
     display: flex;
     height: max-content;
     min-height: 1000px;
@@ -18,21 +16,10 @@
 #intro-section{
     height: 100px;
     color: green;
-
 }
-
-/*.productPage-counter {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    overflow: auto;*/
-/*    height: max-content;*/
-
-/*}*/
-
 
 #outro-section {
     height: 50px;
-
 }
 
 .shopTitle {
@@ -49,29 +36,6 @@
     column-gap: 50px;
 }
 
-.product img {
-    width: 400px;
-}
 
-.product .description {
-    text-align: center;
-}
 
-.product:hover {
-    transition: 0.3s ease-in;
-    cursor: pointer;
-}
 
-.addToCartBttn {
-    background-color: var(--color-button);
-    border: var(--color-button);
-    min-width: 100px;
-    padding: 5px 10px;
-    border-radius: 15px;
-}
-
-.addToCartBttn:hover {
-    background-color: blue;
-    color: whitesmoke;
-    cursor: pointer;
-}
