@@ -180,7 +180,7 @@ function SignUp() {
             {!isAuth && <Button id="register__button"
                                 children={"REGISTER"}
                                 type="submit"
-                                />}
+            />}
 
                 </div>
             </span>
@@ -191,6 +191,7 @@ function SignUp() {
                     classname="outer-container"
                     id="bottom-section"
                 />
+
             </main>
 
         </>

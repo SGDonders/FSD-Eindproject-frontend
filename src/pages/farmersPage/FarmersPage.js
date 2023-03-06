@@ -82,6 +82,7 @@ function FarmersPage() {
                     classname="outer-container"
                     id="bottom-section"
                 />
+
             </main>
 
         </>
