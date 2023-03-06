@@ -113,7 +113,9 @@ select {
 
 
 .warning-msg {
-    margin-top: 10px;
-    font-weight: bold;
     color: red;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+
 }
