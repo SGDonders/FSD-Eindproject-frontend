@@ -1,76 +1,38 @@
-import React, {useContext, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import React, {useContext, useState} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {AuthContext} from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
+import { useForm } from "react-hook-form";
 
-import './RegisterPage.css';
+import "./RegisterPage.css";
 
 import Header from "../../components/header/Header";
-import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 
 import brownCow from "../../assets/pageContent/brownCow.jpg";
 import beans from "../../assets/pageContent/beans.jpg";
 
-
 function SignUp() {
-
-    const [userName, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [zipCode, setZipCode] = useState("")
-    const [address, setAddress] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [email, setEmail] = useState("");
-
-    const url = "http://localhost:8080"
-    const [error, toggleError] = useState(false);
-    const [loading, toggleLoading] = useState(false);
+    const url = "http://localhost:8080";
     const navigate = useNavigate();
-    const {isAuth,} = useContext(AuthContext)
+    const { isAuth } = useContext(AuthContext);
+    const {register, handleSubmit, formState: { errors }} = useForm();
+    const [succesRegister, toggleSuccessRegister] = useState(true)
 
-
-    async function handleSubmit(e) {
-        e.preventDefault();
-        toggleError(false);
-        toggleLoading(true);
-
-        //Check for data feed.
-        // console.log(userName, password, lastName, zipCode, address, phoneNumber, email)
-
+    const onSubmit = async (data) => {
         try {
-            await axios.post(`${url}/accounts`, {
-
-                username: userName,
-                password: password,
-
-                firstName: firstName,
-                lastName: lastName,
-                zipCode: zipCode,
-                address: address,
-                phoneNumber: phoneNumber,
-                email: email
-            });
+            await axios.post(`${url}/accounts`, data);
             navigate("/loginPage");
-
-        } catch (e) {
-            console.error(e);
-            toggleError(true);
-            console.log("Axios request cancelled")
+        } catch (error) {
+            console.error(error);
+            toggleSuccessRegister(false)
         }
-
-        toggleLoading(false);
-        console.log("User registered")
-    }
+    };
 
     return (
         <>
-
-
             <main>
-
                 <Header
                     title="Join our local farmers community, register here!"
                     backgroundImage={beans}
@@ -78,97 +40,146 @@ function SignUp() {
                     id="top-section"
                 />
 
-                <form onSubmit={handleSubmit} className="outer-container" id="outer-container__register">
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="outer-container"
+                    id="outer-container__register"
+                >
                     <section className="inner-container" id="inner-container__register">
                         <div className="register-form__innercontainer">
 
-                            <InputField
-                                className="register"
-                                id="register__username"
-                                clickHandler={(event) => setUsername(event.target.value)}
-                                value={userName}
-                                type="text"
-                                name="username"
-                                placeholder="Username"
-                            > New username:
-                            </InputField>
 
-                            <InputField
-                                className="register"
-                                id="register__password"
-                                clickHandler={(event) => setPassword(event.target.value)}
-                                value={password}
-                                type="text"
-                                name="password"
-                                placeholder="password"
-                            > new password:
-                            </InputField>
 
-                            <InputField
-                                className="register"
-                                id="register__firstname"
-                                clickHandler={(event) => setFirstName(event.target.value)}
-                                value={firstName}
-                                type="text"
-                                name="firstname"
-                                placeholder="Firstname"
-                            > Firstname:
-                            </InputField>
+                            <label htmlFor="username-field">
+                                Username:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-username"
+                                    placeholder="username"
+                                    {...register("userName", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.userName && <p className="warning-msg">username is required</p>}
+                            </label>
 
-                            <InputField
-                                className="register"
-                                id="register__lastname"
-                                clickHandler={(event) => setLastName(event.target.value)}
-                                value={lastName}
-                                type="text"
-                                name="lastname"
-                                placeholder="Lastname"
-                            > Lastname:
-                            </InputField>
+                            <label htmlFor="password-field">
+                                Password:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-password"
+                                    placeholder="password"
+                                    {...register("password", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.password && <p className="warning-msg">Password is required</p>}
+                            </label>
 
-                            <InputField
-                                className="register"
-                                id="register__zipcode"
-                                clickHandler={(event) => setZipCode(event.target.value)}
-                                value={zipCode}
-                                type="text"
-                                name="zipcode"
-                                placeholder="zipcode"
-                            > Zipcode:
-                            </InputField>
+                            <label htmlFor="firstname-field">
+                                Firstname:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-firstname"
+                                    placeholder="firstname"
 
-                            <InputField
-                                className="register"
-                                id="register__adress"
-                                clickHandler={(event) => setAddress(event.target.value)}
-                                value={address}
-                                type="text"
-                                name="adress"
-                                placeholder="adress"
-                            > Address:
-                            </InputField>
+                                    {...register("firstName", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.firstName && <p className="warning-msg">firstname is required</p>}
+                            </label>
 
-                            <InputField
-                                className="register"
-                                id="register__phoneNumber"
-                                clickHandler={(event) => setPhoneNumber(event.target.value)}
-                                value={phoneNumber}
-                                type="text"
-                                name="phonenumber"
-                                placeholder="Phonenumber"
-                            > Phone number:
-                            </InputField>
+                            <label htmlFor="lastname-field">
+                                Lastname:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-lastname"
+                                    placeholder="lastname"
 
-                            <InputField
-                                className="register"
-                                id="register__email"
-                                clickHandler={(event) => setEmail(event.target.value)}
-                                value={email}
-                                type="text"
-                                name="email"
-                                placeholder="Email"
-                            > Email:
-                            </InputField>
+                                    {...register("lastName", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.lastName && <p className="warning-msg">Lastname is required</p>}
+                            </label>
+
+                            <label htmlFor="zipcode-field">
+                                zipcode:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-zipcode"
+                                    placeholder="zipcode"
+
+                                    {...register("zipCode", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.zipCode && <p className="warning-msg">Zipcode is required</p>}
+                            </label>
+
+                            <label htmlFor="address-field">
+                                address:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-address"
+                                    placeholder="adress"
+                                    {...register("address", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.address && <p className="warning-msg">address is required</p>}
+                            </label>
+
+                            <label htmlFor="phonenumber-field">
+                                phonenumber:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-phonenumber"
+                                    placeholder="phonenumber"
+                                    {...register("phoneNumber", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.phoneNumber && <p className="warning-msg">phonenumber is required</p>}
+                            </label>
+
+                            <label htmlFor="email-field">
+                                phonenumber:
+                                <input
+                                    type="text"
+                                    className="register"
+                                    id="register-email"
+                                    placeholder="email"
+                                    {...register("email", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })}
+                                />
+                                {errors.email && <p className="warning-msg">email is required</p>}
+                            </label>
 
                         </div>
                     </section>
@@ -176,6 +187,9 @@ function SignUp() {
 
                     <span className="outer-container" id="register-button__outercontainer">
                 <div className=" inner-container" id="regeister-button__innercontainer">
+
+                    {!succesRegister &&
+                        <h2 className="register-warning-msg">Something went wrong contact your farmer</h2>}
 
             {!isAuth && <Button id="register__button"
                                 children={"REGISTER"}
