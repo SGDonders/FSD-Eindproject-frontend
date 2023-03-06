@@ -20,8 +20,7 @@ function ProfilePage() {
 
     const {
         account: {userName, firstName, lastName, zipCode, address, phoneNumber, email},
-        fetchUserData
-    } = useContext(AuthContext);
+        fetchUserData } = useContext(AuthContext);
     const jwt = localStorage.getItem("token")
     const decodedToken = jwt_decode(jwt);
 
