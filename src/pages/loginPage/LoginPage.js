@@ -25,7 +25,6 @@ function SignIn() {
         e.preventDefault();
         toggleError(false);
 
-
         try {
             const result = await axios.post('http://localhost:8080/authenticate', {
                 username: username,
@@ -33,12 +32,8 @@ function SignIn() {
 
             });
 
-            // om te controleren welke data er wordt opgeslagen.
-            // console.log(result.data);
-
             login(result.data.jwt);
             navigate("/");
-
 
         } catch (e) {
             console.error(e);
@@ -47,10 +42,7 @@ function SignIn() {
     }
 
     return (
-
         <>
-
-
             <main>
 
                 <Header
@@ -62,6 +54,8 @@ function SignIn() {
 
                 <form onSubmit={handleSubmit}>
                     <section className="outer-container" id="outer-container">
+
+                        <h1 className="login-title">Enter your Username and password</h1>
 
                         <InputField
                             className="login"
@@ -91,7 +85,6 @@ function SignIn() {
                         <Button className="login-btn"
                                 type="submit"
                                 children={"LOG IN"}/>
-
 
                     </section>
                 </form>

@@ -4,7 +4,6 @@
 
 /*CSS RESET*/
 
-
 * {box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -59,29 +58,42 @@ select {
     font: inherit;
 }
 
+
 /*GLOBAL STYLES*/
 
 #root {
 
+    /*fontstyles*/
     --font-headings: 'PT Serif', serif;
     --font-body: 'Roboto Condensed', sans-serif;
     --font-button: 'Cabin', sans-serif;
 
+    /*colors*/
     --background-color-navbar: black;
     --color-header-text: white;
     --background-color-section: #f5f3f4;
-    --color-nav-button: linear-gradient(90deg, rgba(227,23,211,1) 0%, rgba(0,0,0,1) 0%, rgba(78,76,78,1) 18%, rgba(133,131,134,1) 50%, rgba(69,68,69,1) 84%, rgba(0,0,0,1) 100%);
     --color-button: #e317d3 ;
     --color-button-text: white;
     --color-button-active: darkblue;
     --background-color-footer: black;
     --text-color-footer: white;
+    --warning-msg-color: red;
+    --color-nav-button: linear-gradient(90deg, rgba(227,23,211,1) 0%,
+                                               rgba(0,0,0,1) 0%,
+                                               rgba(78,76,78,1) 18%,
+                                               rgba(133,131,134,1) 50%,
+                                               rgba(69,68,69,1) 84%,
+                                               rgba(0,0,0,1) 100%);
 
+    /*sizes*/
+    --container-default-width: 1600px;
+    --container-page-height: 400px;
     --page-width: 90vw;
-    --page-height: 400px;
+
 
 
 }
+
 
 /*REUSEABLES*/
 
@@ -90,7 +102,7 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: var(--page-height);
+    height: var(--container-page-height);
     width: 100vw;
 
     background-color: var(
@@ -105,7 +117,7 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: var(--page-height);
+    height: var(--container-page-height);
     flex-basis: 1600px;
     /*border: 2px solid mediumpurple;*/
 
@@ -113,7 +125,7 @@ select {
 
 
 .warning-msg {
-    color: red;
+    color: var(--warning-msg-color);
     font-size: 13px;
     display: flex;
     justify-content: center;

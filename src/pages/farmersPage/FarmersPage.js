@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 
 import './FarmersPage.css'
@@ -8,11 +8,13 @@ import SectionContainer from "../../components/sectionContainer/SectionContainer
 
 import brownCow from "../../assets/pageContent/brownCow.jpg";
 import tractor from "../../assets/pageContent/tractor.jpg";
+import {AuthContext} from "../../context/AuthContext";
 
 function FarmersPage() {
 
     const [picture, setPicture] = useState(null);
     const [error, setError] = useState(null);
+
 
     useEffect(() => {
         async function fetchImage() {
@@ -57,6 +59,8 @@ function FarmersPage() {
 
                         <h1 className="farmers-title">Welcome I am your local producer of fresh products.</h1>
                         <h3 className="farmers-title">My name is Herman de Jager.</h3>
+
+
 
                         {error && <div className="error-msg">Something went wrong: {error.message}</div>}
                         {picture && <img className="image-box" src={picture.src} alt="profile-picture"/>}

@@ -27,11 +27,12 @@
 }
 
 .productImage {
+    display: flex;
     margin-top: 25px;
-    margin-right: 50px;
+    margin-right: 15px;
     height: 150px;
-    width: 150px;
+    width: 250px;
 
 
-    border: 1px solid black;
+    border: 1px solid grey;
 }

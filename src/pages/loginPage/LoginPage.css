@@ -14,3 +14,8 @@
     margin-top: 25px;
 }
 
+.login-title {
+    margin-bottom: 10px;
+    font-family: var(--font-headings);
+    font-size: 30px;
+}

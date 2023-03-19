@@ -2,18 +2,16 @@ import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import {useForm} from "react-hook-form";
 
 import './ProfilePage.css';
 
 import Header from "../../components/header/Header";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-import InputField from "../../components/inputField/InputField";
 import Button from "../../components/button/Button";
 
 import tarwe from "../../assets/pageContent/graan.jpg";
 import horses from "../../assets/pageContent/horses.jpg";
-
-
 
 
 function ProfilePage() {
@@ -21,71 +19,40 @@ function ProfilePage() {
     const {
         account: {userName, firstName, lastName, zipCode, address, phoneNumber, email},
         fetchUserData } = useContext(AuthContext);
+
+    const url = "http://localhost:8080";
     const jwt = localStorage.getItem("token")
     const decodedToken = jwt_decode(jwt);
-
-    const [newFirstName, setNewFirstName] = useState("")
-    const [newLastName, setNewLastName] = useState("")
-    const [newZipCode, setNewZipCode] = useState("")
-    const [newAddress, setNewAddress] = useState("")
-    const [newPhoneNumber, setNewPhoneNumber] = useState("")
-    const [newEmail, setNewEmail] = useState("")
-    const [error, toggleError] = useState(false);
-    const [loading, toggleLoading] = useState(false);
+    const {register, handleSubmit, formState: { errors }} = useForm();
     const [clicks, setClicks]= useState(0);
+    const [onsubmit, toggleOnSubmit] = useState(true)
+
     const refreshPage = () =>{
         setClicks(clicks +1 );
         window.location.reload();}
-
-
 
     useEffect(() => {
         fetchUserData(jwt, decodedToken.sub)
     }, [decodedToken.sub, jwt])
 
-    async function updateProfile (e) {
 
         const storedToken = localStorage.getItem( 'token' )
 
+        const onSubmit = async (data) => {
+            try {
+                await axios.put(`${url}/accounts/${userName}`, data, {
+                    headers: {Authorization: `Bearer ${storedToken}`}})
 
-        e.preventDefault();
-        toggleError(false);
-        toggleLoading(true);
+                refreshPage()
 
-
-        try {
-            await axios.put(`http://localhost:8080/accounts/${userName}`, {
-
-                firstName: newFirstName,
-                lastName: newLastName,
-                address: newAddress,
-                zipCode: newZipCode,
-                phoneNumber: newPhoneNumber,
-                email: newEmail,
-
-                headers: {Authorization: `Bearer ${storedToken}`
-
-                }
-            });
-            refreshPage()
-
-        } catch (e) {
-            console.error(e);
-            toggleError(true);
-            console.log("Axios request cancelled")
+            } catch (error) {
+                console.error(error);
+                toggleOnSubmit(false)
+            }
         }
-
-        toggleLoading(false);
-        console.log("New profile uploaded")
-
-    }
-
-
 
     return (
         <>
-
-
             <main>
 
                 <Header
@@ -96,105 +63,139 @@ function ProfilePage() {
                 />
                 <div className="outer-container" id="outer-container__profile">
                     <div className="inner-container" id="inner-container__profile">
-                        <section>
-
-                            <h2 className="register-title">Your profile settings: </h2>
+                        <section className="left-column">
+                            <h2 className="column-title">Your profile settings: </h2>
                             <span>
-                                <p className="profilePage-fields"><strong>Firstname:</strong> {firstName}</p>
-                                <p className="profilePage-fields"><strong>Lastname:</strong> {lastName}</p>
-                                <p className="profilePage-fields"><strong>Zipcode:</strong> {zipCode}</p>
-                                <p className="profilePage-fields"><strong>Address:</strong> {address}</p>
-                                <p className="profilePage-fields"><strong>Phonenumber:</strong> {phoneNumber}</p>
-                                <p className="profilePage-fields"><strong>Email:</strong> {email}</p>
+                                <p className="profile-settings"><strong>Firstname:</strong> {firstName}</p>
+                                <p className="profile-settings"><strong>Lastname:</strong> {lastName}</p>
+                                <p className="profile-settings"><strong>Zipcode:</strong> {zipCode}</p>
+                                <p className="profile-settings"><strong>Address:</strong> {address}</p>
+                                <p className="profile-settings"><strong>Phonenumber:</strong> {phoneNumber}</p>
+                                <p className="profile-settings"><strong>Email:</strong> {email}</p>
                             </span>
                         </section>
 
-                        <section>
 
-                            <h2 className="register-title">Change profile settings:  </h2>
-                            <form onSubmit={updateProfile} >
 
-                                <InputField
-                                    className="newProfile"
-                                    id="patch__password"
-                                    clickHandler={(event) => setNewFirstName(event.target.value)}
-                                    value={newFirstName}
-                                    type="text"
-                                    name="New firstname"
-                                    placeholder="new firstname"
-                                >
-                                </InputField>
+                        <section className="right-column">
+                            <h2 className="column-title">Change profile settings:</h2>
+                                <form onSubmit={handleSubmit(onSubmit)} >
 
-                                <InputField
-                                    className="newProfile"
-                                    id="patch__firstname"
-                                    clickHandler={(event) => setNewLastName(event.target.value)}
-                                    value={newLastName}
-                                    type="text"
-                                    name="New LastName"
-                                    placeholder="New Lastname"
-                                >
-                                </InputField>
+                                <label htmlFor="firstname-field">
+                                    <strong className="input-field-title">Firstname:</strong>
+                                    <input
+                                        type="text"
+                                        className="profile-field"
+                                        id="register-firstname"
+                                        placeholder="firstname"
 
-                                <InputField
-                                    className="newProfile"
-                                    id="patch__lastname"
-                                    clickHandler={(event) => setNewZipCode(event.target.value)}
-                                    value={newZipCode}
-                                    type="text"
-                                    name="New zipcode"
-                                    placeholder="New zipcode"
-                                >
-                                </InputField>
+                                        {...register("firstName", {
+                                            required: {
+                                                value: true
+                                            }
+                                        })}
+                                    />
+                                    {errors.firstName && <p className="warning-msg">firstname is required</p>}
+                                </label>
 
-                                <InputField
-                                    className="newProfile"
-                                    id="patch__lastname"
-                                    clickHandler={(event) => setNewAddress(event.target.value)}
-                                    value={newAddress}
-                                    type="text"
-                                    name="New address"
-                                    placeholder="New address"
-                                >
-                                </InputField>
+                                <label htmlFor="lastname-field">
+                                    <strong className="input-field-title">Lastname:</strong>
+                                    <input
+                                        type="text"
+                                        className="profile-field"
+                                        id="register-lastname"
+                                        placeholder="lastname"
 
-                                <InputField
-                                    className="newProfile"
-                                    id="patch__lastname"
-                                    clickHandler={(event) => setNewPhoneNumber(event.target.value)}
-                                    value={newPhoneNumber}
-                                    type="text"
-                                    name="New phonenumber"
-                                    placeholder="New phonenumber"
-                                >
-                                </InputField>
+                                        {...register("lastName", {
+                                            required: {
+                                                value: true
+                                            }
+                                        })}
+                                    />
+                                    {errors.lastName && <p className="warning-msg">Lastname is required</p>}
+                                </label>
 
-                                <InputField
-                                    className="newProfile"
-                                    id="patch__lastname"
-                                    clickHandler={(event) => setNewEmail(event.target.value)}
-                                    value={newEmail}
-                                    type="text"
-                                    name="New email"
-                                    placeholder="New email"
-                                >
-                                </InputField>
+                                <label htmlFor="zipcode-field">
+                                    <strong className="input-field-title">Zipcode:</strong>
+                                    <input
+                                        type="text"
+                                        className="profile-field"
+                                        id="register-zipcode"
+                                        placeholder="zipcode"
 
-                            </form>
+                                        {...register("zipCode", {
+                                            required: {
+                                                value: true
+                                            }
+                                        })}
+                                    />
+                                    {errors.zipCode && <p className="warning-msg">Zipcode is required</p>}
+                                </label>
+
+                                <label htmlFor="address-field">
+                                    <strong className="input-field-title">Address:</strong>
+                                    <input
+                                        type="text"
+                                        className="profile-field"
+                                        id="register-address"
+                                        placeholder="adress"
+                                        {...register("address", {
+                                            required: {
+                                                value: true
+                                            }
+                                        })}
+                                    />
+                                    {errors.address && <p className="warning-msg">address is required</p>}
+                                </label>
+
+                                <label htmlFor="phonenumber-field">
+                                    <strong className="input-field-title">Phonenumber:</strong>
+                                    <input
+                                        type="text"
+                                        className="profile-field"
+                                        id="register-phonenumber"
+                                        placeholder="phonenumber"
+                                        {...register("phoneNumber", {
+                                            required: {
+                                                value: true
+                                            }
+                                        })}
+                                    />
+                                    {errors.phoneNumber && <p className="warning-msg">phonenumber is required</p>}
+                                </label>
+
+                                <label htmlFor="email-field">
+                                    <strong className="input-field-title">Email:</strong>
+                                    <input
+                                        type="text"
+                                        className="profile-field"
+                                        id="register-email"
+                                        placeholder="email"
+                                        {...register("email", {
+                                            required: {
+                                                value: true
+                                            }
+                                        })}
+                                    />
+                                    {errors.email && <p className="warning-msg">email is required</p>}
+                                </label>
+
+                                <div className="profile-button">
+                                    {<Button className="profile-button"
+                                             children="Update your profile"
+                                             type="submit"
+                                    />}
+                                </div>
+
+
+                                    {!onsubmit &&
+                                        <h2 className="warning-msg">Something went wrong contact your farmer</h2>}
+
+
+                                </form>
                         </section>
                     </div>
                 </div>
-
-                <section className="outer-container" id="outer-container__button">
-                    <div className="inner-container" id="inner-container__button">
-                        {<Button className="profile-button"
-                                 children="Update your profile"
-                                 type="submit"
-                                 clickhandler={updateProfile}
-                        />}
-                    </div>
-                </section>
-
 
                 <SectionContainer
                     backgroundImage={horses}

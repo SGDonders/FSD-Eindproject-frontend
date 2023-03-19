@@ -9,7 +9,7 @@ const SectionContainer = ({ container, title, backgroundImage, classname, id, tx
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                color: "blueviolet",
+                color: "black",
                 fontSize: 22
 
             }}

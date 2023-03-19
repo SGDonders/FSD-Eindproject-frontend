@@ -3,11 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .cart-button {
     width: 100px;
     height: 40px;
+
 }
 
 .cartItem {
@@ -21,14 +23,20 @@
     border-radius: 25px;
     margin-bottom: 10px;
 
+
 }
 
-.cartItem-img {
-    width: 250px;
+.cart-img {
+    display: flex;
+    border: 1px solid grey;
+    width: 500px;
     height: 200px;
+    margin-right: 50px;
     margin-top: 25px;
-    margin-right: 100px;
-    border: 1px solid black;
+
+
+
+
 }
 
 .cartItem .description {

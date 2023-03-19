@@ -13,12 +13,13 @@ import SectionContainer from "../../components/sectionContainer/SectionContainer
 import brownCow from "../../assets/pageContent/brownCow.jpg";
 import beans from "../../assets/pageContent/beans.jpg";
 
+
 function SignUp() {
     const url = "http://localhost:8080";
     const navigate = useNavigate();
     const { isAuth } = useContext(AuthContext);
     const {register, handleSubmit, formState: { errors }} = useForm();
-    const [succesRegister, toggleSuccessRegister] = useState(true)
+    const [onsubmit, toggleOnSubmit] = useState(true)
 
     const onSubmit = async (data) => {
         try {
@@ -26,7 +27,7 @@ function SignUp() {
             navigate("/loginPage");
         } catch (error) {
             console.error(error);
-            toggleSuccessRegister(false)
+            toggleOnSubmit(false)
         }
     };
 
@@ -59,12 +60,20 @@ function SignUp() {
                                     placeholder="username"
                                     {...register("userName", {
                                         required: {
-                                            value: true
+                                            value: true,
+                                            message: "Username is required"
+                                        },
+                                        minLength: {
+                                            value: 5,
+                                            message: "Username must be at least 5 characters"
                                         }
                                     })}
                                 />
-                                {errors.userName && <p className="warning-msg">username is required</p>}
+                                {errors.userName && (
+                                    <p className="warning-msg">{errors.userName.message}</p>
+                                )}
                             </label>
+
 
                             <label htmlFor="password-field">
                                 Password:
@@ -117,7 +126,7 @@ function SignUp() {
                             </label>
 
                             <label htmlFor="zipcode-field">
-                                zipcode:
+                                ZipCode:
                                 <input
                                     type="text"
                                     className="register"
@@ -134,7 +143,7 @@ function SignUp() {
                             </label>
 
                             <label htmlFor="address-field">
-                                address:
+                                Address:
                                 <input
                                     type="text"
                                     className="register"
@@ -150,7 +159,7 @@ function SignUp() {
                             </label>
 
                             <label htmlFor="phonenumber-field">
-                                phonenumber:
+                                Phonenumber:
                                 <input
                                     type="text"
                                     className="register"
@@ -158,15 +167,23 @@ function SignUp() {
                                     placeholder="phonenumber"
                                     {...register("phoneNumber", {
                                         required: {
-                                            value: true
+                                            value: true,
+                                            message: "Phonenumber is required"
+                                        },
+                                        pattern: {
+                                            value: /^[0-9]{10,}$/,
+                                            message: "Phonenumber must contain only digits and be at least 10 characters"
                                         }
                                     })}
                                 />
-                                {errors.phoneNumber && <p className="warning-msg">phonenumber is required</p>}
+                                {errors.phoneNumber && (
+                                    <p className="warning-msg">{errors.phoneNumber.message}</p>
+                                )}
                             </label>
 
+
                             <label htmlFor="email-field">
-                                phonenumber:
+                                Email:
                                 <input
                                     type="text"
                                     className="register"
@@ -174,12 +191,21 @@ function SignUp() {
                                     placeholder="email"
                                     {...register("email", {
                                         required: {
-                                            value: true
+                                            value: true,
+                                            message: "Email is required"
+                                        },
+                                        pattern: {
+                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                            message: "Invalid email address"
                                         }
                                     })}
                                 />
-                                {errors.email && <p className="warning-msg">email is required</p>}
+                                {errors.email && (
+                                    <p className="warning-msg">{errors.email.message}</p>
+                                )}
                             </label>
+
+
 
                         </div>
                     </section>
@@ -188,7 +214,7 @@ function SignUp() {
                     <span className="outer-container" id="register-button__outercontainer">
                 <div className=" inner-container" id="regeister-button__innercontainer">
 
-                    {!succesRegister &&
+                    {!onsubmit &&
                         <h2 className="register-warning-msg">Something went wrong contact your farmer</h2>}
 
             {!isAuth && <Button id="register__button"

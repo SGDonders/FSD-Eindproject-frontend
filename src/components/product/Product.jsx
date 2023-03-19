@@ -6,20 +6,24 @@ import './product.css'
 import Button from "../button/Button";
 
 
-
 export const Product = ({data}) => {
-    const { id, productName, price, category } = data;
+    const { id, productName, price, category, image } = data;
     const { addToCart, cartItems } = useContext(ShopContext);
     const cartItemCount = cartItems[id];
 
     return (
 
-
         <>
             <div className="product">
-                {data.image.fileName !== null && <span>
-                    <img className="productImage" src={`data:image/webp;base64,${data.image.docFile}`} alt="image of product" />
-                </span>}
+                <span className="productImage">
+                    <img
+                        src={image.docFile
+                        ? `data:image/webp;base64,${image.docFile}`
+                        : image
+                        }
+                        alt="image of product"
+                    />
+                </span>
                 <div className="description">
                     <h2>
                         {productName}
@@ -33,13 +37,14 @@ export const Product = ({data}) => {
                 </Button>
                 </div>
             </div>
-
         </>
-
     );
 }
 
 export default Product;
+
+
+
 
 
 
