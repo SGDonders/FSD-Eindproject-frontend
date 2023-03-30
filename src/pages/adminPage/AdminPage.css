@@ -6,23 +6,28 @@
 }
 
 #outer-container-adminpage {
-    height: 150px;
+    height: 50px;
 }
 
 #outer-container-bottom {
     height: 450px;
 }
 
+#outer-container-warning {
+    height: 80px;
+}
+
+#inner-container-warning {
+    height: 80px;
+}
 
 .admin-field {
     width: 200px;
     margin-bottom: 15px;
-
 }
 
 .admin-form {
     margin: 50px;
-
 }
 
 .img-form {
@@ -54,12 +59,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .choose-file-btn {
     display: flex;
     padding-left: 90px;
-
 }
+
+.adminpage {
+    display: flex;
+    flex-direction: column;
+}
+
+.warning {
+    display: flex;
+    justify-content: flex-start;
+    color: red;
+}
+
 

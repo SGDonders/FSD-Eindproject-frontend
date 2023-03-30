@@ -63,6 +63,7 @@ function ProfilePage() {
                 />
                 <div className="outer-container" id="outer-container__profile">
                     <div className="inner-container" id="inner-container__profile">
+
                         <section className="left-column">
                             <h2 className="column-title">Your profile settings: </h2>
                             <span>
@@ -148,37 +149,51 @@ function ProfilePage() {
                                     {errors.address && <p className="warning-msg">address is required</p>}
                                 </label>
 
-                                <label htmlFor="phonenumber-field">
-                                    <strong className="input-field-title">Phonenumber:</strong>
-                                    <input
-                                        type="text"
-                                        className="profile-field"
-                                        id="register-phonenumber"
-                                        placeholder="phonenumber"
-                                        {...register("phoneNumber", {
-                                            required: {
-                                                value: true
-                                            }
-                                        })}
-                                    />
-                                    {errors.phoneNumber && <p className="warning-msg">phonenumber is required</p>}
-                                </label>
+                                    <label htmlFor="phonenumber-field">
+                                        <strong className="input-field-title">Phonenumber:</strong>:
+                                        <input
+                                            type="text"
+                                            className="profile-field"
+                                            id="register-phonenumber"
+                                            placeholder="phonenumber"
+                                            {...register("phoneNumber", {
+                                                required: {
+                                                    value: true,
+                                                    message: "Phonenumber is required"
+                                                },
+                                                pattern: {
+                                                    value: /^[0-9]{10,}$/,
+                                                    message: "Phonenumber must contain only digits and be at least 10 characters"
+                                                }
+                                            })}
+                                        />
+                                        {errors.phoneNumber && (
+                                            <p className="warning-msg">{errors.phoneNumber.message}</p>
+                                        )}
+                                    </label>
 
-                                <label htmlFor="email-field">
-                                    <strong className="input-field-title">Email:</strong>
-                                    <input
-                                        type="text"
-                                        className="profile-field"
-                                        id="register-email"
-                                        placeholder="email"
-                                        {...register("email", {
-                                            required: {
-                                                value: true
-                                            }
-                                        })}
-                                    />
-                                    {errors.email && <p className="warning-msg">email is required</p>}
-                                </label>
+                                    <label htmlFor="email-field">
+                                        <strong className="input-field-title">Email:</strong>:
+                                        <input
+                                            type="text"
+                                            className="profile-field"
+                                            id="profile-email"
+                                            placeholder="email"
+                                            {...register("email", {
+                                                required: {
+                                                    value: true,
+                                                    message: "Email is required"
+                                                },
+                                                pattern: {
+                                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                                    message: "Invalid email address"
+                                                }
+                                            })}
+                                        />
+                                        {errors.email && (
+                                            <p className="warning-msg">{errors.email.message}</p>
+                                        )}
+                                    </label>
 
                                 <div className="profile-button">
                                     {<Button className="profile-button"
@@ -187,10 +202,8 @@ function ProfilePage() {
                                     />}
                                 </div>
 
-
                                     {!onsubmit &&
                                         <h2 className="warning-msg">Something went wrong contact your farmer</h2>}
-
 
                                 </form>
                         </section>
@@ -204,10 +217,7 @@ function ProfilePage() {
 
                 />
             </main>
-
         </>
-
-
     );
 }
 

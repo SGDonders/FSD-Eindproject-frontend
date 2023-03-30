@@ -12,13 +12,9 @@ import Button from "../../components/button/Button";
 import peach from "../../assets/pageContent/peach.jpg";
 import chicken from "../../assets/pageContent/chicken.jpg";
 
-
-
 function HowToOrder() {
     const navigate = useNavigate()
     const {isAuth,} = useContext(AuthContext)
-
-
 
     return (
         <>
@@ -35,6 +31,7 @@ function HowToOrder() {
 
                 <section className="outer-container" id="howToOrder-outer-section">
                     <div className="inner-container" id="howToOrder-inner-section">
+
                         <h5 className='howToOrder-section-title'>1. Register your details</h5>
                         <p>Enter you registration details on the register form</p>
                         <h5 className="howToOrder-section-title">2. Sign in</h5>
@@ -44,6 +41,7 @@ function HowToOrder() {
                         <p> Add the products to your cart</p>
                         <h5 className="howToOrder-section-title">4.Collect</h5>
                         <p>Your farmer will pack your order and and send conformation of the order details.</p>
+
                     </div>
 
                     {isAuth && <Button className="howToOrder__button"
@@ -65,8 +63,6 @@ function HowToOrder() {
                 />
 
             </main>
-
-
         </>
     );
 }

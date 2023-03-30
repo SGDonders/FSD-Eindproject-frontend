@@ -1,8 +1,5 @@
-import React, {useContext, useState} from "react";
-import axios, {Axios} from "axios";
-import {AuthContext} from "../../context/AuthContext";
-import {useNavigate} from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import React, {useState} from "react";
+import axios from "axios";
 
 import './AdminPage.css';
 
@@ -11,12 +8,6 @@ import Button from "../../components/button/Button";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 
 function AdminPage() {
-
-
-    const {
-        account: {userName, firstName, lastName, zipCode, address, phoneNumber, email},
-        fetchUserData
-    } = useContext(AuthContext);
 
     const [productName, setProductName] = useState("")
     const [price, setPrice] = useState("")
@@ -28,6 +19,7 @@ function AdminPage() {
     const [patchPrice, setPatchPrice] = useState(0)
     const [patchAvailableStock, setPatchAvailableStock] = useState(0)
     const [patchCategory, setPatchCategory] = useState("")
+
     const [previewURL, setPreviewURL] = useState("")
     const [file, setFile] = useState("")
     const [productImage, setProductImage] = useState("")
@@ -35,9 +27,8 @@ function AdminPage() {
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    const navigate = useNavigate();
-    const {isAuth,} = useContext(AuthContext)
     const token = localStorage.getItem('token');
+
 
     function HandleFileChange(e) {
         const uploadedFile = e.target.files[0]
@@ -54,7 +45,6 @@ function AdminPage() {
     }
 
 
-
     async function handleSubmitPost(e) {
         e.preventDefault();
         toggleError(false);
@@ -68,7 +58,6 @@ function AdminPage() {
                     availableStock: availableStock,
                     category: category,
 
-
                 }, {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -76,15 +65,11 @@ function AdminPage() {
                     }
                 }
             );
-
         } catch (e) {
             console.error(e);
-            toggleError(true);
-            console.log("Axios request cancelled")
+            toggleError(true)
         }
-
-        toggleLoading(false);
-        // console.log("Product posted")
+        toggleLoading(true);
     }
 
     async function handleSubmitDelete(e) {
@@ -97,16 +82,13 @@ function AdminPage() {
 
                 headers: {
                     Authorization: `Bearer ${token}`
-
                 }
             });
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
-
-        toggleLoading(false);
+        toggleLoading(true);
     }
 
     async function handleSubmitPatch(e) {
@@ -114,11 +96,6 @@ function AdminPage() {
         toggleError(false);
         toggleLoading(true);
 
-        // console.log(patchProductName)
-        // console.log(patchPrice)
-        // console.log(patchCategory)
-        // console.log(patchAvailableStock)
-        // console.log(token)
         try {
             await axios.patch(`http://localhost:8080/product/${patchProductName}`, {
 
@@ -127,23 +104,18 @@ function AdminPage() {
                 availableStock: patchAvailableStock,
                 category: patchCategory,
 
-
             }, {
                     headers: {
                         Authorization: `Bearer ${token}`
-
                     }
                 }
                 );
-
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
 
-        toggleLoading(false);
-        console.log("Product patched")
+        toggleLoading(true);
     }
 
     async function uploadProfilePicture(e) {
@@ -156,15 +128,11 @@ function AdminPage() {
                         "Content-Type": "multipart/form-data"
                     },
                 })
-            console.log("Picture uploaded")
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
-
-        toggleLoading(false);
-        console.log("Error - picture upload.")
+        toggleLoading(true);
     }
 
     async function uploadProductPicture(e) {
@@ -178,15 +146,11 @@ function AdminPage() {
                         "Content-Type": "multipart/form-data"
                     },
                 })
-            console.log("Picture uploaded")
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
-
-        toggleLoading(false);
-        console.log("Error - picture upload.")
+        toggleLoading(true);
     }
 
 
@@ -197,6 +161,22 @@ function AdminPage() {
                 id="outer-container-adminpage"
             />
 
+            <section className="outer-container" id="outer-container-warning">
+                <span className="inner-container" id="inner-container-warning">
+
+                    <h3>{
+                        error ?
+                            <p className="warning">Something went wrong with your request, try again.</p>
+                            : loading ?
+                                <div className="loading">Request completed.</div>
+                                :
+                                null
+                    }</h3>
+
+                </span>
+            </section>
+
+
             <section className="outer-container">
                 <div className="inner-container" id="inner-container-products">
 
@@ -204,44 +184,44 @@ function AdminPage() {
                         <h1>POST PRODUCT</h1>
                         <InputField
                             className="admin-field"
-                            id="post__username"
+                            id="post-productName"
                             clickHandler={(event) => setProductName(event.target.value)}
                             value={productName}
                             type="text"
-                            name="Productname"
+                            name="productName"
                             placeholder="Productname"
                         > Productname:
                         </InputField>
 
                         <InputField
                             className="admin-field"
-                            id="post__password"
+                            id="post-price"
                             clickHandler={(event) => setPrice(event.target.value)}
                             value={price}
                             type="text"
-                            name="Price"
+                            name="price"
                             placeholder="Price"
                         > Price:
                         </InputField>
 
                         <InputField
                             className="admin-field"
-                            id="post__firstname"
+                            id="post-availableStock"
                             clickHandler={(event) => setAvailableStock(event.target.value)}
                             value={availableStock}
                             type="text"
-                            name="Available stock"
+                            name="availableStock"
                             placeholder="Available stock"
                         > Available stock:
                         </InputField>
 
                         <InputField
                             className="admin-field"
-                            id="post__lastname"
+                            id="post-category"
                             clickHandler={(event) => setCategory(event.target.value)}
                             value={category}
                             type="text"
-                            name="Category"
+                            name="category"
                             placeholder="Category"
                         > Category:
                         </InputField>
@@ -256,7 +236,7 @@ function AdminPage() {
                         <h1>PATCH PRODUCT</h1>
                         <InputField
                             className="admin-field"
-                            id="patch__username"
+                            id="patch-productName"
                             clickHandler={(event) => setPatchProductName(event.target.value)}
                             value={patchProductName}
                             type="text"
@@ -267,10 +247,10 @@ function AdminPage() {
 
                         <InputField
                             className="admin-field"
-                            id="patch__password"
+                            id="patch-price"
                             clickHandler={(event) => setPatchPrice(event.target.value)}
                             value={patchPrice}
-                            type="number"
+                            type="text"
                             name="Price"
                             placeholder="Price"
                         > Price:
@@ -278,10 +258,10 @@ function AdminPage() {
 
                         <InputField
                             className="admin-field"
-                            id="patch__firstname"
+                            id="patch-availableStock"
                             clickHandler={(event) => setPatchAvailableStock(event.target.value)}
                             value={patchAvailableStock}
-                            type="number"
+                            type="text"
                             name="Available stock"
                             placeholder="Available stock"
                         > Available stock:
@@ -289,7 +269,7 @@ function AdminPage() {
 
                         <InputField
                             className="admin-field"
-                            id="patch__lastname"
+                            id="patch-category"
                             clickHandler={(event) => setPatchCategory(event.target.value)}
                             value={patchCategory}
                             type="text"
@@ -308,7 +288,7 @@ function AdminPage() {
                         <h1>DELETE PRODUCT</h1>
                         <InputField
                             className="admin-field"
-                            id="delete__product"
+                            id="delete-product"
                             clickHandler={(event) => setDelProductName(event.target.value)}
                             value={delProductName}
                             type="text"
@@ -400,11 +380,7 @@ function AdminPage() {
             <SectionContainer
                 classname="outer-container"
                 id="outer-container-bottom"
-
-
             />
-
-
         </>
     )
 }

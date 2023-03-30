@@ -31,6 +31,7 @@ function SignUp() {
         }
     };
 
+
     return (
         <>
             <main>
@@ -48,8 +49,6 @@ function SignUp() {
                 >
                     <section className="inner-container" id="inner-container__register">
                         <div className="register-form__innercontainer">
-
-
 
                             <label htmlFor="username-field">
                                 Username:
@@ -73,7 +72,6 @@ function SignUp() {
                                     <p className="warning-msg">{errors.userName.message}</p>
                                 )}
                             </label>
-
 
                             <label htmlFor="password-field">
                                 Password:
@@ -181,7 +179,6 @@ function SignUp() {
                                 )}
                             </label>
 
-
                             <label htmlFor="email-field">
                                 Email:
                                 <input
@@ -204,8 +201,6 @@ function SignUp() {
                                     <p className="warning-msg">{errors.email.message}</p>
                                 )}
                             </label>
-
-
 
                         </div>
                     </section>

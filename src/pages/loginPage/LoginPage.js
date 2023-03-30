@@ -29,7 +29,6 @@ function SignIn() {
             const result = await axios.post('http://localhost:8080/authenticate', {
                 username: username,
                 password: password
-
             });
 
             login(result.data.jwt);
@@ -79,8 +78,7 @@ function SignIn() {
                         >Password:
                         </InputField>
 
-                        {toggleError && <p className="warning-msg">You are not logged in!</p>}
-
+                        {error && <p className="warning-msg">Wrong username and/or password!</p>}
 
                         <Button className="login-btn"
                                 type="submit"

@@ -4,6 +4,12 @@ import jwt_decode from "jwt-decode";
 
 import axios from "axios";
 
+// This code exports an implementation of an authentication context provider for a React application, which provides
+// authentication state and functionality to its children components. The context manages the authentication state,
+// and allows the user to login, logout and fetch user data, while also checking for the existence of a stored token
+// to keep the user logged in. The AuthContextProvider component wraps its children components and renders them once
+// authentication has been verified, otherwise a "Loading..." message is displayed.
+
 export const AuthContext = createContext( {} );
 
 function AuthContextProvider( { children } ) {
@@ -43,7 +49,6 @@ function AuthContextProvider( { children } ) {
         console.log( "User logged in.. 🔓" )
         localStorage.setItem( 'token', jwt )
         const decodedToken = jwt_decode( jwt );
-
         void fetchUserData( jwt, decodedToken.sub, "/" )
     }
 
@@ -104,6 +109,7 @@ function AuthContextProvider( { children } ) {
         login: login,
         logout: logout,
         fetchUserData,
+
     }
 
     return (

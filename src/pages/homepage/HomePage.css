@@ -32,7 +32,6 @@
 
 #top-section {
     border: 5px solid black;
-
 }
 
 .product-tile {
@@ -51,7 +50,6 @@
                 rgba(0, 0, 0, 0.07) 0px 8px 16px,
                 rgba(0, 0, 0, 0.07) 0px 16px 32px,
                 rgba(0, 0, 0, 0.07) 0px 32px 64px;
-    /*clip-path: circle(50% at 50% 50%);*/
     font-family: var(--font-headings);
     font-size: 27px;
 }
@@ -59,7 +57,6 @@
 .mid-section {
     height: 400px;
     width: 1100px;
-
     margin-top: 25px;
 }
 
@@ -97,13 +94,11 @@
     font-family: var(--font-body);
     font-size: 20px;
     margin-left: 15px;
-
 }
 
 .farmers-title {
     padding: 13px;
     margin-left: 15px;
-
     font-family: var(--font-headings);
 }
 

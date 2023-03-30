@@ -2,6 +2,8 @@ import React from 'react';
 
 import './InputField.css';
 
+// InputField component that renders an input field with a label and optional placeholder,
+// value, and click handler function.
 const InputField = ({className, clickHandler,
                     type, name, children, value, placeholder, id}) => {
     return (

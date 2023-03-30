@@ -5,12 +5,13 @@ import './Cart-item.css';
 
 import noProduct from "../../assets/NoProduct/notAvailable.png";
 
+// CartItem component that displays the details of a single item in the shopping cart and provides functionality to
+// add or remove items from the cart.
+
 export const CartItem = (props) => {
     const {id, productName, price, image} = props.data;
     const {cartItems, addToCart, removeFromCart, updateCartItemCount} =
         useContext(ShopContext);
-
-    console.log(cartItems)
 
 
     return (

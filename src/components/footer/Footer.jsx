@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Footer.css';
 
-
+// Footer component that displays the footer of the web page, including a message and the current year.
 const Footer = () => {
     const year = new Date().getFullYear();
 

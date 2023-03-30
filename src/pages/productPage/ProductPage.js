@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {PRODUCTS} from "../../products";
 import './ProductPage.css';
@@ -15,13 +15,12 @@ function ProductPage() {
 
     return (
         <>
-            <Header
+             <Header
                 title="Choose your products here!"
                 backgroundImage={cherry}
                 className="outer-container"
                 id="top-section"
             />
-
 
             <section className="outer-container" id="outer-container-products">
                 <div className="inner-container" id="inner-container-products">

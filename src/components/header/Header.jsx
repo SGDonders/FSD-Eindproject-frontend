@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Header.css';
 
+// Header component that displays the header of the web page, including a background image and a title.
 const Header = ({ id, title, backgroundImage, classname }) => {
     return (
         <header
@@ -12,7 +13,6 @@ const Header = ({ id, title, backgroundImage, classname }) => {
                 backgroundPosition: 'center',
                 color: "white",
                 fontSize: 28
-
             }}
             id={id}
         >

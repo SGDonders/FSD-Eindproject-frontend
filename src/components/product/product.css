@@ -1,12 +1,10 @@
 
-
 .description {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 25px;
     font-family: var(--font-headings);
-
 }
 
 .product {
@@ -32,7 +30,5 @@
     margin-right: 15px;
     height: 150px;
     width: 250px;
-
-
     border: 1px solid grey;
 }

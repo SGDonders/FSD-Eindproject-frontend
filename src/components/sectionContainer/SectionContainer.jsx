@@ -1,7 +1,10 @@
 import React from 'react';
 import './SectionContainer.css';
 
-const SectionContainer = ({ container, title, backgroundImage, classname, id, txt, rollingText }) => {
+
+// This is a React functional component that represents a section container with a background image and text, which can
+// be customized with different CSS classes, IDs, and font sizes.
+const SectionContainer = ({ backgroundImage, classname, id, txt }) => {
     return (
         <div
             className={classname} id={id}
@@ -11,12 +14,10 @@ const SectionContainer = ({ container, title, backgroundImage, classname, id, tx
                 backgroundPosition: 'center',
                 color: "black",
                 fontSize: 22
-
             }}
 
         >
-            <h1 className={container} id={rollingText}>{title}</h1>
-            <p >{txt}</p>
+            {txt}
         </div>
     );
 };
