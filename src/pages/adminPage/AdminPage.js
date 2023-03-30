@@ -13,12 +13,13 @@ function AdminPage() {
     const [price, setPrice] = useState("")
     const [availableStock, setAvailableStock] = useState("")
     const [category, setCategory] = useState("")
-    const [delProductName, setDelProductName] = useState("")
 
     const [patchProductName, setPatchProductName] = useState("")
     const [patchPrice, setPatchPrice] = useState(0)
     const [patchAvailableStock, setPatchAvailableStock] = useState(0)
     const [patchCategory, setPatchCategory] = useState("")
+
+    const [delProductName, setDelProductName] = useState("")
 
     const [previewURL, setPreviewURL] = useState("")
     const [file, setFile] = useState("")
@@ -27,6 +28,7 @@ function AdminPage() {
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
+
     const token = localStorage.getItem('token');
 
 
@@ -320,7 +322,11 @@ function AdminPage() {
                                 >ProductName:
                                 </InputField>
                                 <label>
-                                    <input onChange={HandleProductImageChange} className="choose-file-btn" type="file" name="file" accept="image.*"/>
+                                    <input onChange={HandleProductImageChange}
+                                           className="choose-file-btn"
+                                           type="file"
+                                           name="file"
+                                           accept="image.*"/>
                                 </label>
                             </label>
 
@@ -341,7 +347,10 @@ function AdminPage() {
                     <h1>UPLOAD YOUR PROFILE PICTURE</h1>
                     <form className="img-form" onSubmit={uploadProfilePicture}>
                         <label>
-                            <input onChange={HandleFileChange} className="choose-file-btn" type="file" name="file" accept="image.*"/>
+                            <input onChange={HandleFileChange}
+                                   className="choose-file-btn"
+                                   type="file" name="file"
+                                   accept="image.*"/>
                         </label>
 
                         <Button
@@ -369,7 +378,8 @@ function AdminPage() {
                         {previewURL &&
                             <label className="preview-box">
                                 <div className="image-span">
-                                    <img src={previewURL} alt="preview picture"/>
+                                    <img src={previewURL}
+                                         alt="preview picture"/>
                                 </div>
                             </label>}
                     </div>

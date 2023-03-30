@@ -5,7 +5,7 @@ import './product.css'
 
 import Button from "../button/Button";
 
-// This code exports a React component called "Product" that displays product information and allows the user to add the
+// Product component that displays product information and allows the user to add the
 // product to their cart. The component receives a "data" prop containing the product information, and uses the
 // "useContext" hook to access cart-related functions and data. It renders an image, product name, price, category,
 // and an "Add to Cart" button that updates the cart count.

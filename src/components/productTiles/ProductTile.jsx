@@ -4,7 +4,7 @@ import './ProductTile.css';
 
 import Button from "../button/Button";
 
-// This code defines a reusable component for a product tile, which displays the product name, price, and a button with
+// Pproduct tile component, which displays the product name, price, and a button with
 // a background image. The component receives various props for customizing the tile's content and behavior.
 const ProductTile = ({ idProductName, idPrice, productName, backgroundImage, price, button, className, clickHandler }) => (
     <div
