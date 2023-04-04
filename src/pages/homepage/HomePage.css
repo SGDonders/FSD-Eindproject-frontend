@@ -34,6 +34,7 @@
     border: 5px solid black;
 }
 
+
 .product-tile {
     display: flex;
     flex-direction: column;

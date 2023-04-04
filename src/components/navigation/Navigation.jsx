@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
 import {ShoppingCart} from "phosphor-react";
@@ -12,11 +12,11 @@ import Button from "../button/Button";
 // information and uses the useNavigate hook to handle navigation to the login page.
 
 function Navigation() {
-     // This useEffect is necessary for displaying adminPage when logged in as admin.
-    useEffect(()=>{},[])
+
 
     const {isAuth, logout, account} = useContext(AuthContext)
     const navigate = useNavigate()
+
 
     function clickHandler() {
         navigate("/loginPage")
@@ -60,7 +60,7 @@ function Navigation() {
                                  to="/ProfilePage">Profilepage |
                         </NavLink>
                     </li>}
-                    {account &&
+                    {
                     (isAuth && account.user.authorities[0].authority !== "ROLE_USER") && <li className="navbar-list-items">
                         <NavLink className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
                                  to="/AdminPage">Adminpage |

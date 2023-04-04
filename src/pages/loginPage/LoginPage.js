@@ -21,6 +21,8 @@ function SignIn() {
     const {login} = useContext(AuthContext);
     const navigate = useNavigate();
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         toggleError(false);
@@ -33,6 +35,7 @@ function SignIn() {
 
             login(result.data.jwt);
             navigate("/");
+
 
         } catch (e) {
             console.error(e);

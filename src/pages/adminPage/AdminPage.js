@@ -34,14 +34,12 @@ function AdminPage() {
 
     function HandleFileChange(e) {
         const uploadedFile = e.target.files[0]
-        console.log(uploadedFile)
         setFile(uploadedFile)
         setPreviewURL(URL.createObjectURL(uploadedFile));
     }
 
     function HandleProductImageChange(e) {
         const uploadedImage = e.target.files[0];
-        console.log(uploadedImage);
         setProductImage(uploadedImage);
         setProductImagePreviewURL(URL.createObjectURL(uploadedImage));
     }
@@ -138,7 +136,6 @@ function AdminPage() {
     }
 
     async function uploadProductPicture(e) {
-        console.log("functie uitgevoerd")
         const formData = new FormData();
         formData.append("file", productImage)
         try {

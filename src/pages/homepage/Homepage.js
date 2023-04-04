@@ -1,15 +1,13 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext";
 import './HomePage.css';
 import {useNavigate} from "react-router-dom";
-
 
 import Header from "../../components/header/Header";
 import Button from "../../components/button/Button";
 import ProductTile from "../../components/productTiles/ProductTile";
 import HelperFunction from "../../helpers/HelperFunction";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
-
 
 import farmersBasketImage from '../../assets/pageContent/farmers_basket.jpg';
 import tile1 from '../../assets/styleImageTiles/tile1.jpg';

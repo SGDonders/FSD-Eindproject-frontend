@@ -12,7 +12,8 @@ const Header = ({ id, title, backgroundImage, classname }) => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 color: "white",
-                fontSize: 28
+                fontSize: 28,
+
             }}
             id={id}
         >
