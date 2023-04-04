@@ -1,8 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
-import axios, {Axios} from "axios";
-import {AuthContext} from "../../context/AuthContext";
-import {useNavigate} from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import React, {useState} from "react";
+import axios from "axios";
 
 import './AdminPage.css';
 
@@ -12,26 +9,18 @@ import SectionContainer from "../../components/sectionContainer/SectionContainer
 
 function AdminPage() {
 
-
-    // const {
-    //     account: {userName, firstName, lastName, zipCode, address, phoneNumber, email},
-    //     fetchUserData
-    // } = useContext(AuthContext);
-
-
-    const jwt = localStorage.getItem("token")
-    const decodedToken = jwt_decode(jwt);
-
     const [productName, setProductName] = useState("")
     const [price, setPrice] = useState("")
     const [availableStock, setAvailableStock] = useState("")
     const [category, setCategory] = useState("")
+
+    const [patchProductName, setPatchProductName] = useState("")
+    const [patchPrice, setPatchPrice] = useState(0)
+    const [patchAvailableStock, setPatchAvailableStock] = useState(0)
+    const [patchCategory, setPatchCategory] = useState("")
+
     const [delProductName, setDelProductName] = useState("")
 
-    const [patchProduct, setPatchProductName] = useState("")
-    const [patchPrice, setPatchPrice] = useState("")
-    const [patchAvailableStock, setPatchAvailableStock] = useState("")
-    const [patchCategory, setPatchCategory] = useState("")
     const [previewURL, setPreviewURL] = useState("")
     const [file, setFile] = useState("")
     const [productImage, setProductImage] = useState("")
@@ -39,24 +28,21 @@ function AdminPage() {
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    const navigate = useNavigate();
-    const {isAuth,} = useContext(AuthContext)
+
     const token = localStorage.getItem('token');
+
 
     function HandleFileChange(e) {
         const uploadedFile = e.target.files[0]
-        console.log(uploadedFile)
         setFile(uploadedFile)
         setPreviewURL(URL.createObjectURL(uploadedFile));
     }
 
     function HandleProductImageChange(e) {
         const uploadedImage = e.target.files[0];
-        console.log(uploadedImage);
         setProductImage(uploadedImage);
         setProductImagePreviewURL(URL.createObjectURL(uploadedImage));
     }
-
 
 
     async function handleSubmitPost(e) {
@@ -67,25 +53,23 @@ function AdminPage() {
         try {
             await axios.post(`http://localhost:8080/product`, {
 
-                productName: productName,
-                price: price,
-                availableStock: availableStock,
-                category: category,
+                    productName: productName,
+                    price: price,
+                    availableStock: availableStock,
+                    category: category,
 
-                headers: {
-                    Authorization: `Bearer ${token}`
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
 
+                    }
                 }
-            });
-
+            );
         } catch (e) {
             console.error(e);
-            toggleError(true);
-            console.log("Axios request cancelled")
+            toggleError(true)
         }
-
-        toggleLoading(false);
-        // console.log("Product posted")
+        toggleLoading(true);
     }
 
     async function handleSubmitDelete(e) {
@@ -98,16 +82,13 @@ function AdminPage() {
 
                 headers: {
                     Authorization: `Bearer ${token}`
-
                 }
             });
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
-
-        toggleLoading(false);
+        toggleLoading(true);
     }
 
     async function handleSubmitPatch(e) {
@@ -115,29 +96,26 @@ function AdminPage() {
         toggleError(false);
         toggleLoading(true);
 
-
         try {
-            await axios.patch(`http://localhost:8080/product/${patchProduct}`, {
+            await axios.patch(`http://localhost:8080/product/${patchProductName}`, {
 
-                productName: productName,
-                price: price,
-                availableStock: availableStock,
-                category: category,
+                productName: patchProductName,
+                price: patchPrice,
+                availableStock: patchAvailableStock,
+                category: patchCategory,
 
-                headers: {
-                    Authorization: `Bearer ${token}`
-
+            }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            });
-
+                );
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
 
-        toggleLoading(false);
-        // console.log("Product patched")
+        toggleLoading(true);
     }
 
     async function uploadProfilePicture(e) {
@@ -150,19 +128,14 @@ function AdminPage() {
                         "Content-Type": "multipart/form-data"
                     },
                 })
-            console.log("Picture uploaded")
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
-
-        toggleLoading(false);
-        console.log("Error - picture upload.")
+        toggleLoading(true);
     }
 
     async function uploadProductPicture(e) {
-        console.log("functie uitgevoerd")
         const formData = new FormData();
         formData.append("file", productImage)
         try {
@@ -172,28 +145,35 @@ function AdminPage() {
                         "Content-Type": "multipart/form-data"
                     },
                 })
-            console.log("Picture uploaded")
         } catch (e) {
             console.error(e);
             toggleError(true);
-            console.log("Axios request cancelled")
         }
-
-        toggleLoading(false);
-        console.log("Error - picture upload.")
+        toggleLoading(true);
     }
 
 
     return (
-
         <>
-
             <SectionContainer
                 classname="outer-container"
                 id="outer-container-adminpage"
-
-
             />
+
+            <section className="outer-container" id="outer-container-warning">
+                <span className="inner-container" id="inner-container-warning">
+
+                    <h3>{
+                        error ?
+                            <p className="warning">Something went wrong with your request, try again.</p>
+                            : loading ?
+                                <div className="loading">Request completed.</div>
+                                :
+                                null
+                    }</h3>
+
+                </span>
+            </section>
 
 
             <section className="outer-container">
@@ -203,44 +183,44 @@ function AdminPage() {
                         <h1>POST PRODUCT</h1>
                         <InputField
                             className="admin-field"
-                            id="post__username"
+                            id="post-productName"
                             clickHandler={(event) => setProductName(event.target.value)}
                             value={productName}
                             type="text"
-                            name="Productname"
+                            name="productName"
                             placeholder="Productname"
                         > Productname:
                         </InputField>
 
                         <InputField
                             className="admin-field"
-                            id="post__password"
+                            id="post-price"
                             clickHandler={(event) => setPrice(event.target.value)}
                             value={price}
                             type="text"
-                            name="Price"
+                            name="price"
                             placeholder="Price"
                         > Price:
                         </InputField>
 
                         <InputField
                             className="admin-field"
-                            id="post__firstname"
+                            id="post-availableStock"
                             clickHandler={(event) => setAvailableStock(event.target.value)}
                             value={availableStock}
                             type="text"
-                            name="Available stock"
+                            name="availableStock"
                             placeholder="Available stock"
                         > Available stock:
                         </InputField>
 
                         <InputField
                             className="admin-field"
-                            id="post__lastname"
+                            id="post-category"
                             clickHandler={(event) => setCategory(event.target.value)}
                             value={category}
                             type="text"
-                            name="Category"
+                            name="category"
                             placeholder="Category"
                         > Category:
                         </InputField>
@@ -251,14 +231,13 @@ function AdminPage() {
                         />}
                     </form>
 
-
                     <form className="admin-form" onSubmit={handleSubmitPatch}>
                         <h1>PATCH PRODUCT</h1>
                         <InputField
                             className="admin-field"
-                            id="patch__username"
+                            id="patch-productName"
                             clickHandler={(event) => setPatchProductName(event.target.value)}
-                            value={patchProduct}
+                            value={patchProductName}
                             type="text"
                             name="Productname"
                             placeholder="Productname"
@@ -267,7 +246,7 @@ function AdminPage() {
 
                         <InputField
                             className="admin-field"
-                            id="patch__password"
+                            id="patch-price"
                             clickHandler={(event) => setPatchPrice(event.target.value)}
                             value={patchPrice}
                             type="text"
@@ -278,7 +257,7 @@ function AdminPage() {
 
                         <InputField
                             className="admin-field"
-                            id="patch__firstname"
+                            id="patch-availableStock"
                             clickHandler={(event) => setPatchAvailableStock(event.target.value)}
                             value={patchAvailableStock}
                             type="text"
@@ -289,7 +268,7 @@ function AdminPage() {
 
                         <InputField
                             className="admin-field"
-                            id="patch__lastname"
+                            id="patch-category"
                             clickHandler={(event) => setPatchCategory(event.target.value)}
                             value={patchCategory}
                             type="text"
@@ -308,7 +287,7 @@ function AdminPage() {
                         <h1>DELETE PRODUCT</h1>
                         <InputField
                             className="admin-field"
-                            id="delete__product"
+                            id="delete-product"
                             clickHandler={(event) => setDelProductName(event.target.value)}
                             value={delProductName}
                             type="text"
@@ -325,36 +304,39 @@ function AdminPage() {
                     </form>
 
                     <div className="upload-product-img">
-                    <h1>UPLOAD PRODUCT PICTURE</h1>
-                    <form className="img-form" onSubmit={uploadProductPicture}>
+                        <h1>UPLOAD PRODUCT PICTURE</h1>
+                        <form className="img-form" onSubmit={uploadProductPicture}>
 
-                        <label className="upload-img-product">
-                            <InputField
-                                className="admin-field"
-                                id="upload-product-img"
-                                clickHandler={(event) => setProductName(event.target.value)}
-                                value={productName}
-                                type="text"
-                                name="upload-productname"
-                                placeholder="Productname"
-                            >ProductName:
-                            </InputField>
-                            <label>
-                                <input onChange={HandleProductImageChange} className="choose-file-btn" type="file" name="file" accept="image.*"/>
+                            <label className="upload-img-product">
+                                <InputField
+                                    className="admin-field"
+                                    id="upload-product-img"
+                                    clickHandler={(event) => setProductName(event.target.value)}
+                                    value={productName}
+                                    type="text"
+                                    name="upload-productname"
+                                    placeholder="Productname"
+                                >ProductName:
+                                </InputField>
+                                <label>
+                                    <input onChange={HandleProductImageChange}
+                                           className="choose-file-btn"
+                                           type="file"
+                                           name="file"
+                                           accept="image.*"/>
+                                </label>
                             </label>
-                        </label>
 
-                        <Button
-                            children="Upload productpicture"
-                            type="submit"
-                            className="upload-product-img-button"
-                        />
-                    </form>
-                </div>
+                            <Button
+                                children="Upload productpicture"
+                                type="submit"
+                                className="upload-product-img-button"
+                            />
+                        </form>
+                    </div>
 
                 </div>
             </section>
-
 
             <section className="outer-container" id="outer-container__img">
                 <div className="inner-container" id="inner-container__img">
@@ -362,7 +344,10 @@ function AdminPage() {
                     <h1>UPLOAD YOUR PROFILE PICTURE</h1>
                     <form className="img-form" onSubmit={uploadProfilePicture}>
                         <label>
-                            <input onChange={HandleFileChange} className="choose-file-btn" type="file" name="file" accept="image.*"/>
+                            <input onChange={HandleFileChange}
+                                   className="choose-file-btn"
+                                   type="file" name="file"
+                                   accept="image.*"/>
                         </label>
 
                         <Button
@@ -390,7 +375,8 @@ function AdminPage() {
                         {previewURL &&
                             <label className="preview-box">
                                 <div className="image-span">
-                                    <img src={previewURL} alt="preview picture"/>
+                                    <img src={previewURL}
+                                         alt="preview picture"/>
                                 </div>
                             </label>}
                     </div>
@@ -398,30 +384,16 @@ function AdminPage() {
                 </div>
             </section>
 
-
             <SectionContainer
                 classname="outer-container"
                 id="outer-container-bottom"
-
-
             />
-
-
         </>
     )
 }
 
 
 export default AdminPage;
-
-
-
-
-
-
-
-
-
 
 
 

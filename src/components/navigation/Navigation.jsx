@@ -7,12 +7,15 @@ import './Navigation.css';
 
 import Button from "../button/Button";
 
+// This is a functional component that renders a navigation bar with links to different pages. It also conditionally renders
+// login/logout buttons based on authentication status. The component uses context to access authentication
+// information and uses the useNavigate hook to handle navigation to the login page.
+
 function Navigation() {
 
-    const {isAuth, logout} = useContext(AuthContext)
+
+    const {isAuth, logout, account} = useContext(AuthContext)
     const navigate = useNavigate()
-
-
 
 
     function clickHandler() {
@@ -57,8 +60,8 @@ function Navigation() {
                                  to="/ProfilePage">Profilepage |
                         </NavLink>
                     </li>}
-
-                    {isAuth && <li className="navbar-list-items">
+                    {
+                    (isAuth && account.user.authorities[0].authority !== "ROLE_USER") && <li className="navbar-list-items">
                         <NavLink className={({isActive}) => isActive ? 'active-menu-link' : 'default-menu-link'}
                                  to="/AdminPage">Adminpage |
                         </NavLink>
@@ -81,7 +84,6 @@ function Navigation() {
                                                 type="button"
                                                 clickhandler={logout}
                                                 className="nav-button"/>}
-
 
                         </div>
                     </li>

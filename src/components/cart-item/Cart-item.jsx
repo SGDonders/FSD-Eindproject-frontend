@@ -3,20 +3,29 @@ import {ShopContext} from "../../context/shop-context";
 
 import './Cart-item.css';
 
+import noProduct from "../../assets/NoProduct/notAvailable.png";
+
+// CartItem component that displays the details of a single item in the shopping cart and provides functionality to
+// add or remove items from the cart.
+
 export const CartItem = (props) => {
-    const {id, productName, price, productImage} = props.data;
+    const {id, productName, price, image} = props.data;
     const {cartItems, addToCart, removeFromCart, updateCartItemCount} =
         useContext(ShopContext);
-
-    console.log(cartItems)
 
 
     return (
 
         <div className="cartItem">
 
-            <span>
-                <img className="cartItem-img" src={productImage} alt="image of product"/>
+            <span className="cart-img">
+                 <img
+                     src={image.docFile
+                         ? `data:image/webp;base64,${props.data.image.docFile}`
+                         : noProduct
+                     }
+                     alt="picture not available"
+                 />
             </span>
 
             <div className="description">

@@ -21,20 +21,17 @@ function SignIn() {
     const {login} = useContext(AuthContext);
     const navigate = useNavigate();
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         toggleError(false);
-
 
         try {
             const result = await axios.post('http://localhost:8080/authenticate', {
                 username: username,
                 password: password
-
             });
-
-            // om te controleren welke data er wordt opgeslagen.
-            // console.log(result.data);
 
             login(result.data.jwt);
             navigate("/");
@@ -47,10 +44,7 @@ function SignIn() {
     }
 
     return (
-
         <>
-
-
             <main>
 
                 <Header
@@ -62,6 +56,8 @@ function SignIn() {
 
                 <form onSubmit={handleSubmit}>
                     <section className="outer-container" id="outer-container">
+
+                        <h1 className="login-title">Enter your Username and password</h1>
 
                         <InputField
                             className="login"
@@ -85,13 +81,11 @@ function SignIn() {
                         >Password:
                         </InputField>
 
-                        {toggleError && <p className="warning-msg">You are not logged in!</p>}
-
+                        {error && <p className="warning-msg">Wrong username and/or password!</p>}
 
                         <Button className="login-btn"
                                 type="submit"
                                 children={"LOG IN"}/>
-
 
                     </section>
                 </form>

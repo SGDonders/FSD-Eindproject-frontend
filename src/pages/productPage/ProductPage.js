@@ -1,23 +1,21 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {PRODUCTS} from "../../products";
 import './ProductPage.css';
 
 import Header from "../../components/header/Header";
-import ProductCounter, {Product} from "../../components/product/Product";
+import {Product} from "../../components/product/Product";
 import SectionContainer from "../../components/sectionContainer/SectionContainer";
 
 import piglets from "../../assets/pageContent/lamb.jpg";
 import cherry from "../../assets/pageContent/cherry.jpg";
 
-
-
-
 function ProductPage() {
+
 
     return (
         <>
-            <Header
+             <Header
                 title="Choose your products here!"
                 backgroundImage={cherry}
                 className="outer-container"
@@ -29,7 +27,7 @@ function ProductPage() {
 
                 <div className="products">
                     {PRODUCTS.map((product) => (
-                        <Product data={product} />
+                        <Product key={product.id} data={product} />
                     ))}
                 </div>
 

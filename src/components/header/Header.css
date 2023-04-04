@@ -3,4 +3,17 @@ header {
     display: flex;
     font-family: var(--font-headings);
     color: var(--color-header-text);
+    animation: zoom-in 6s ease-in-out forwards;
+
+
+
+}
+
+@keyframes zoom-in {
+    from {
+        background-size: 120%;
+    }
+    to {
+        background-size: 100%;
+    }
 }

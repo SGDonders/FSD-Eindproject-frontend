@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import axios from "axios";
 
 import './FarmersPage.css'
@@ -59,7 +59,9 @@ function FarmersPage() {
                         <h3 className="farmers-title">My name is Herman de Jager.</h3>
 
                         {error && <div className="error-msg">Something went wrong: {error.message}</div>}
-                        {picture && <img className="image-box" src={picture.src} alt="profile-picture"/>}
+                        {picture && <img className="image-box"
+                                         src={picture.src}
+                                         alt="profilepicture from farmer"/>}
 
                         <p className="farmers-text">
                             Welcome to our farm in the beautiful province of Friesland! We're located in the city of Boornzwaag, and we're proud to say that we're committed to both traditional and biological farming practices.

@@ -1,12 +1,10 @@
 
-
 .description {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 25px;
     font-family: var(--font-headings);
-
 }
 
 .product {
@@ -27,11 +25,10 @@
 }
 
 .productImage {
+    display: flex;
     margin-top: 25px;
-    margin-right: 50px;
+    margin-right: 15px;
     height: 150px;
-    width: 150px;
-
-
-    border: 1px solid black;
+    width: 250px;
+    border: 1px solid grey;
 }

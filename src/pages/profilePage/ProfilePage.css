@@ -1,33 +1,33 @@
 
 
-#farmer-picture {
-    display: flex;
-    height: 350px;
-    width: 600px;
-}
-
 #outer-container__profile {
-    height: 850px;
+    height: 950px;
 }
 
 #inner-container__profile {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 850px;
+    height: 950px;
     width: 1600px;
 }
 
-.register-title {
-    margin-bottom: 15px;
-    font-family: var(--font-headings) ;
-}
-
-.profilePage-fields {
+.profile-settings {
     display: flex;
     flex-direction: column;
     font-size: 20px;
     font-family: var(--font-body);
+    padding-bottom: 14px;
+}
+
+.column-title {
+    font-family: var(--font-headings);
+    margin-bottom: 15px;
+}
+
+.input-field-title {
+    font-family: var(--font-body);
+    font-size: 18px;
 }
 
 .newProfile {
@@ -43,7 +43,10 @@
 }
 
 .profile-button {
-    margin-bottom: 60px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+
 }
 
 #outer-container__button {
@@ -54,4 +57,22 @@
     height: 150px;
 
 }
+
+.inner-container-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    height: 32px;
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.left-column {
+    margin-bottom: 100px;
+}
+
 

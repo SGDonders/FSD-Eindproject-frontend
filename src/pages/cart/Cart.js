@@ -12,8 +12,7 @@ import {PRODUCTS} from "../../products";
 export const Cart = () => {
     const {cartItems, getTotalCartAmount, checkout} = useContext(ShopContext);
     const totalAmount = getTotalCartAmount();
-    // console.log(products)
-    // console.log(cartItems)
+
 
     const navigate = useNavigate();
 
@@ -27,40 +26,36 @@ export const Cart = () => {
                 </div>
             </section>
 
+            <div className="cart">
+                {PRODUCTS.map((product) => {
+                    if (cartItems[product.id] !== 0) {
+                        return <CartItem data={product}/>;
+                    }
+                })}
+            </div>
 
+            {totalAmount > 0 ? (
+                <div className="checkout">
 
-
-                        <div className="cart">
-                            {PRODUCTS.map((product) => {
-                                if (cartItems[product.id] !== 0) {
-                                    return <CartItem data={product}/>;
-                                }
-                            })}
-                        </div>
-
-                        {totalAmount > 0 ? (
-                            <div className="checkout">
-
-                                <Button
-                                    className="checkout-button"
-                                    clickhandler={() => navigate("/productpage")}> Continue Shopping
-                                </Button>
-                                <Button
-                                    className="checkout-button"
-                                    clickhandler={() => {checkout();navigate("/PageNotFound");
-                                    }}
-                                >
-                                    {" "}
-                                    Checkout{" "}
-                                </Button>
-                                <h2 className="subtotal"> Subtotal: € {totalAmount.toFixed(2)} </h2>
-                            </div>
-                        ) : (
-                            <h1 className=" empty-cart"> Your shopping cart is empty</h1>
-                        )}
-
-
-
+                    <Button
+                        className="checkout-button"
+                        clickhandler={() => navigate("/productpage")}> Continue Shopping
+                    </Button>
+                    <Button
+                        className="checkout-button"
+                        clickhandler={() => {
+                            checkout();
+                            navigate("/PageNotFound");
+                        }}
+                    >
+                        {" "}
+                        Checkout{" "}
+                    </Button>
+                    <h2 className="subtotal"> Subtotal: € {totalAmount.toFixed(2)} </h2>
+                </div>
+            ) : (
+                <h1 className=" empty-cart"> Your shopping cart is empty</h1>
+            )}
         </>
     );
 };
