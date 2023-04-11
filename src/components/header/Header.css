@@ -4,14 +4,11 @@ header {
     font-family: var(--font-headings);
     color: var(--color-header-text);
     animation: zoom-in 6s ease-in-out forwards;
-
-
-
 }
 
 @keyframes zoom-in {
     from {
-        background-size: 120%;
+        background-size: 110%;
     }
     to {
         background-size: 100%;
